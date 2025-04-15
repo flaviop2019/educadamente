@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Site One Page</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --dark: #111827;
+      --light: #f3f4f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+    }
+
+    nav {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      padding: 10px 0;
+    }
+
+    nav ul li {
+      margin: 0 20px;
+    }
+
+    nav a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .services, .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#portfolio">Portfólio</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Bem-vindo ao Meu Site</h1>
+    <p>Um layout moderno, responsivo e feito com HTML, CSS e JavaScript.</p>
+  </header>
+
+  <section id="sobre">
+    <h2>Sobre</h2>
+    <p>Sou um desenvolvedor apaixonado por criar experiências digitais incríveis. Trabalho com design moderno, performance e boas práticas.</p>
+  </section>
+
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <div class="services">
+      <div class="card">
+        <h3>Web Design</h3>
+        <p>Criação de interfaces modernas e responsivas para sua aplicação ou site.</p>
+      </div>
+      <div class="card">
+        <h3>Desenvolvimento</h3>
+        <p>Aplicações em HTML, CSS, JavaScript e frameworks modernos.</p>
+      </div>
+      <div class="card">
+        <h3>Consultoria</h3>
+        <p>Ajuda técnica para melhorar seu produto digital e otimizar processos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2>Portfólio</h2>
+    <div class="portfolio">
+      <div class="card"><p>Projeto 1</p></div>
+      <div class="card"><p>Projeto 2</p></div>
+      <div class="card"><p>Projeto 3</p></div>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Entre em contato através do e-mail: <strong>seunome@email.com</strong></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 - Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    // Opcional: animação suave ao clicar nos links
+    document.querySelectorAll('nav a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
