@@ -6,14 +6,11 @@
   <title>Educadamente - Centro de Desenvolvimento</title>
   <style>
     :root {
-      --cor1: #f3f4f6;
-      --cor2: #e0f7fa;
-      --cor3: #fff3e0;
-      --cor4: #e8f5e9;
-      --cor5: #ede7f6;
-      --primary: #4f46e5;
+      --laranja: #F47523;
+      --verde: #01B08E;
       --text-dark: #111827;
       --text-light: #ffffff;
+      --bg-light: #f9f9f9;
     }
 
     * {
@@ -25,10 +22,13 @@
 
     body {
       font-family: Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-size: 1.2rem;
     }
 
     nav {
-      background-color: white;
+      background-color: var(--text-light);
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
@@ -41,7 +41,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 20px;
+      padding: 15px 30px;
     }
 
     .logo {
@@ -50,14 +50,14 @@
     }
 
     .logo img {
-      height: 60px;
-      margin-right: 10px;
+      height: 80px;
+      margin-right: 15px;
     }
 
     .logo span {
       font-weight: bold;
-      font-size: 1.2rem;
-      color: var(--primary);
+      font-size: 1.6rem;
+      color: var(--laranja);
     }
 
     nav ul {
@@ -66,75 +66,78 @@
     }
 
     nav ul li {
-      margin-left: 20px;
+      margin-left: 30px;
     }
 
     nav a {
       text-decoration: none;
       color: var(--text-dark);
       font-weight: bold;
+      font-size: 1.2rem;
       transition: color 0.3s;
     }
 
     nav a:hover {
-      color: var(--primary);
+      color: var(--verde);
     }
 
     header {
-      /*background-color: #ff8c00;  */
       min-height: 80vh;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       text-align: center;
-      color: #F47523;
-      padding: 40px 20px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin-top: 10px;
-    }
-
-    .logo-header {
-      max-height: 90vh;
-    }
-
-    section {
+      background: linear-gradient(to right, var(--laranja), var(--verde));
+      color: var(--text-light);
       padding: 60px 20px;
     }
 
-    #sobre { background-color: var(--cor1); }
-    #servicos { background-color: var(--cor2); }
-    #portfolio { background-color: var(--cor3); }
-    #contato { background-color: var(--cor4); }
+    header h1 {
+      font-size: 3.5rem;
+      margin-top: 20px;
+    }
+
+    header p {
+      font-size: 1.5rem;
+      max-width: 800px;
+      margin-top: 20px;
+    }
+
+    .logo-header {
+      height: 150px;
+    }
+
+    section {
+      padding: 80px 20px;
+    }
 
     section h2 {
-      font-size: 2,5rem;
-      margin-bottom: 20px;
+      font-size: 2.8rem;
+      margin-bottom: 30px;
       text-align: center;
-      color: var(--primary);
+      color: var(--laranja);
     }
 
     section p {
-      max-width: 800px;
-      margin: auto;
+      max-width: 900px;
+      margin: 10px auto;
       text-align: center;
-      font-size: 1rem;
-      line-height: 1rem;
+      font-size: 1.3rem;
+      line-height: 1.8rem;
     }
 
+    #sobre { background-color: #fff7f1; }
+    #servicos { background-color: #e6faf7; }
+    #portfolio { background-color: #fef2e6; }
+    #contato { background-color: #eafdf6; }
+
     footer {
-      background-color: var(--cor5);
+      background-color: var(--verde);
       text-align: center;
-      padding: 20px;
-      color: #555;
+      padding: 25px;
+      color: var(--text-light);
+      font-size: 1.1rem;
     }
 
     @media (max-width: 768px) {
@@ -143,7 +146,7 @@
         background-color: white;
         position: absolute;
         width: 100%;
-        top: 60px;
+        top: 90px;
         left: 0;
         display: none;
       }
@@ -164,7 +167,7 @@
 
     .menu-toggle {
       display: none;
-      font-size: 24px;
+      font-size: 28px;
     }
   </style>
 </head>
@@ -173,7 +176,6 @@
   <nav>
     <div class="nav-container">
       <div class="logo">
-        <!-- Logo visível -->
         <img src="https://raw.githubusercontent.com/flaviop2019/educadamente/main/images/Logo%20Educadamente-final-03.png" alt="Logo" />
         <span>Educadamente - Centro de Desenvolvimento</span>
       </div>
@@ -194,12 +196,9 @@
   
   <section id="sobre">
     <h2>Sobre</h2>
-    <p>Nosso objetivo é disseminar conhecimento, desenvolver habilidades e inspirar atitudes que 
-transformam vidas. </p>
-    <p>Atuamos com base nas neurociências, competências socioemocionais e aprendizagem 
-significativa.</p>
-    <p>Agora também oferecemos soluções pedagógicas práticas e eficientes para professores dos 
-Anos Iniciais do Ensino Fundamental. </p>
+    <p>Nosso objetivo é disseminar conhecimento, desenvolver habilidades e inspirar atitudes que transformam vidas.</p>
+    <p>Atuamos com base nas neurociências, competências socioemocionais e aprendizagem significativa.</p>
+    <p>Agora também oferecemos soluções pedagógicas práticas e eficientes para professores dos Anos Iniciais do Ensino Fundamental.</p>
   </section>
 
   <section id="servicos">
@@ -218,11 +217,10 @@ Anos Iniciais do Ensino Fundamental. </p>
   </section>
 
   <footer>
-    <p>&copy; 2025 MeuSite - Todos os direitos reservados.</p>
+    <p>&copy; 2025 Educadamente - Todos os direitos reservados.</p>
   </footer>
 
   <script>
-    // Menu responsivo (caso queira usar em mobile)
     function toggleMenu() {
       document.getElementById("nav-links").classList.toggle("show");
     }
