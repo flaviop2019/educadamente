@@ -1,1215 +1,220 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon - Soluções Digitais</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Variáveis de cor e tipografia */
-        :root {
-            --primary: #FF6B6B;
-            --secondary: #4ECDC4;
-            --dark: #292F36;
-            --light: #F7FFF7;
-            --accent: #FFE66D;
-            --gray: #6C757D;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            --font-primary: 'Poppins', sans-serif;
-        }
-
-        /* Reset e estilos base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-primary);
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.5);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-        }
-
-        .section-title p {
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Header moderno com logo à esquerda */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 20px 0;
-            transition: var(--transition);
-            background-color: rgba(247, 255, 247, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--dark);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            position: relative;
-            padding: 5px 0;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            color: var(--dark);
-            z-index: 1001;
-        }
-
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(247, 255, 247, 0.9) 0%, rgba(78, 205, 196, 0.1) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero-text h1 span {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: var(--gray);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-        }
-
-        .hero-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .hero-image img {
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-shapes {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1;
-        }
-
-        .shape {
-            position: absolute;
-            opacity: 0.1;
-            border-radius: 50%;
-        }
-
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            top: -100px;
-            left: -100px;
-        }
-
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            background: var(--secondary);
-            bottom: -50px;
-            right: -50px;
-        }
-
-        /* About Section */
-        #about {
-            background-color: white;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-
-        .about-image {
-            flex: 1;
-            position: relative;
-        }
-
-        .about-image img {
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-        }
-
-        .about-image::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 3px solid var(--secondary);
-            border-radius: 20px;
-            top: -20px;
-            left: -20px;
-            z-index: -1;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            color: var(--gray);
-        }
-
-        .skills {
-            margin-top: 30px;
-        }
-
-        .skill-item {
-            margin-bottom: 20px;
-        }
-
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .skill-bar {
-            height: 8px;
-            background-color: #e9ecef;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 4px;
-        }
-
-        /* Services Section */
-        #services {
-            background-color: #f8f9fa;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background-color: white;
-            padding: 40px 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 25px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.8rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        /* Portfolio Section */
-        #portfolio {
-            background-color: white;
-        }
-
-        .portfolio-filter {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            border-radius: 50px;
-            background: transparent;
-            border: 1px solid #dee2e6;
-            color: var(--gray);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .filter-btn.active, .filter-btn:hover {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: white;
-            border-color: transparent;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-
-        .portfolio-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(255, 107, 107, 0.8), rgba(78, 205, 196, 0.8));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.1);
-        }
-
-        .portfolio-info {
-            text-align: center;
-            padding: 20px;
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .portfolio-item:hover .portfolio-info {
-            transform: translateY(0);
-        }
-
-        .portfolio-info h3 {
-            color: white;
-            margin-bottom: 10px;
-        }
-
-        .portfolio-info p {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        /* Contact Section */
-        #contact {
-            background: linear-gradient(135deg, rgba(247, 255, 247, 0.9) 0%, rgba(78, 205, 196, 0.1) 100%);
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        .info-item {
-            display: flex;
-            gap: 15px;
-        }
-
-        .info-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .info-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .info-content p, .info-content a {
-            color: var(--gray);
-        }
-
-        .contact-form {
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--secondary);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.2);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 80px 0 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 50px;
-            height: 2px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-        }
-
-        .footer-about p {
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            transform: translateY(-5px);
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
-            list-style: none;
-        }
-
-        .footer-links a {
-            opacity: 0.8;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            opacity: 0.8;
-        }
-
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .hero-content, .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .about-image::before {
-                display: none;
-            }
-
-            .hero-text h1 {
-                font-size: 2.8rem;
-            }
-
-            section {
-                padding: 80px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 400px;
-                height: 100vh;
-                background-color: white;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                transition: right 0.3s ease;
-                z-index: 1000;
-                padding: 100px 30px 30px;
-                flex-direction: column;
-                justify-content: flex-start;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero-text h1 {
-                font-size: 2rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 15px;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Page Responsivo</title>
+  <style>
+    :root {
+      --cor1: #f3f4f6;
+      --cor2: #e0f7fa;
+      --cor3: #fff3e0;
+      --cor4: #e8f5e9;
+      --cor5: #ede7f6;
+      --primary: #4f46e5;
+      --text-dark: #111827;
+      --text-light: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    header {
+      background: url('https://source.unsplash.com/1600x600/?technology') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-top: 10px;
+    }
+
+    section {
+      padding: 60px 20px;
+    }
+
+    #sobre { background-color: var(--cor1); }
+    #servicos { background-color: var(--cor2); }
+    #portfolio { background-color: var(--cor3); }
+    #contato { background-color: var(--cor4); }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-align: center;
+      color: var(--primary);
+    }
+
+    section p {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    footer {
+      background-color: var(--cor5);
+      text-align: center;
+      padding: 20px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        left: 0;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+      }
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header com logo à esquerda -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <div class="logo-icon">N</div>
-                    <div class="logo-text">Neon</div>
-                </a>
-                
-                <div class="menu-toggle" id="menu-toggle">
-                    <i class="fas fa-bars"></i>
-                </div>
-                
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="#services">Serviços</a></li>
-                    <li><a href="#portfolio">Portfólio</a></li>
-                    <li><a href="#contact">Contato</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Seção Hero -->
-    <section id="hero">
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Criamos experiências <span>digitais incríveis</span></h1>
-                    <p>Transformamos ideias em realidade com designs impressionantes e tecnologia de ponta para impulsionar seu negócio.</p>
-                    <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">Comece Agora</a>
-                        <a href="#portfolio" class="btn btn-secondary">Ver Portfólio</a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Design Digital">
-                </div>
-            </div>
-        </div>
-    </section>
+  <nav>
+    <div class="nav-container">
+      <div class="logo">
+        <!-- Logo visível -->
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo" />
+        <span>MeuSite</span>
+      </div>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul id="nav-links">
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <!-- Seção Sobre -->
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Sobre Nós</h2>
-                <p>Somos uma equipe de profissionais apaixonados por criar soluções digitais que fazem a diferença no mercado.</p>
-            </div>
-            
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nossa Equipe">
-                </div>
-                <div class="about-text">
-                    <h3>Inovando o futuro digital</h3>
-                    <p>Fundada em 2015, a Neon surgiu com o propósito de transformar o mundo digital através de soluções criativas e tecnológicas.</p>
-                    <p>Nossa equipe multidisciplinar combina design, tecnologia e estratégia para criar produtos digitais que encantam usuários e impulsionam negócios.</p>
-                    
-                    <div class="skills">
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Design</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Desenvolvimento</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-info">
-                                <span>Marketing</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <header>
+    <h1>Bem-vindo ao Meu Site</h1>
+    <p>Este é um exemplo de site one page moderno, com cores distintas para cada seção.</p>
+  </header>
 
-    <!-- Seção Serviços -->
-    <section id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nossos Serviços</h2>
-                <p>Oferecemos soluções completas para impulsionar sua presença digital e alcançar seus objetivos de negócio.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Desenvolvimento Web</h3>
-                    <p>Sites responsivos e sistemas web personalizados com as melhores tecnologias do mercado.</p>
-                    <a href="#">Saiba mais →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Aplicativos Móveis</h3>
-                    <p>Aplicativos nativos e híbridos para iOS e Android com excelente experiência do usuário.</p>
-                    <a href="#">Saiba mais →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3>UI/UX Design</h3>
-                    <p>Interfaces intuitivas e atraentes que melhoram a experiência do usuário e aumentam conversões.</p>
-                    <a href="#">Saiba mais →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-search-dollar"></i>
-                    </div>
-                    <h3>Marketing Digital</h3>
-                    <p>Estratégias personalizadas para aumentar sua presença online e atrair mais clientes.</p>
-                    <a href="#">Saiba mais →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>SEO</h3>
-                    <p>Otimização para mecanismos de busca para melhorar seu posicionamento e visibilidade.</p>
-                    <a href="#">Saiba mais →</a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>Branding</h3>
-                    <p>Desenvolvimento de identidade visual e estratégia de marca para destacar seu negócio.</p>
-                    <a href="#">Saiba mais →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="sobre">
+    <h2>Sobre</h2>
+    <p>Somos uma equipe apaixonada por tecnologia, design e soluções criativas. Criamos sites modernos, rápidos e que funcionam em qualquer dispositivo.</p>
+  </section>
 
-    <!-- Seção Portfólio -->
-    <section id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nosso Portfólio</h2>
-                <p>Confira alguns dos nossos trabalhos recentes e veja como podemos transformar seu negócio.</p>
-            </div>
-            
-            <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="web">Web</button>
-                <button class="filter-btn" data-filter="app">App</button>
-                <button class="filter-btn" data-filter="design">Design</button>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Projeto Web" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <h3>E-commerce Moderno</h3>
-                            <p>Plataforma de vendas online</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="app">
-                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto App" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <h3>App de Finanças</h3>
-                            <p>Controle financeiro pessoal</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="design">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Projeto Design" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <h3>Identidade Visual</h3>
-                            <p>Rebranding para startup</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1636&q=80" alt="Projeto Web" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <h3>Portal Corporativo</h3>
-                            <p>Site institucional moderno</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="app">
-                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto App" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <h3>App de Delivery</h3>
-                            <p>Solução para restaurantes</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item" data-category="design">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Projeto Design" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <div class="portfolio-info">
-                            <h3>UI/UX Dashboard</h3>
-                            <p>Interface para sistema de análise</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <p>Oferecemos desenvolvimento web, design responsivo, otimização de SEO e muito mais para ajudar sua marca a crescer online.</p>
+  </section>
 
-    <!-- Seção Contato -->
-    <section id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Entre em Contato</h2>
-                <p>Tem um projeto em mente? Vamos conversar sobre como podemos ajudar a transformar sua ideia em realidade.</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Endereço</h3>
-                            <p>Av. Digital, 1234<br>São Paulo, SP<br>04567-890</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Telefone</h3>
-                            <p><a href="tel:+5511999999999">(11) 99999-9999</a></p>
-                            <p><a href="tel:+5511888888888">(11) 88888-8888</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Email</h3>
-                            <p><a href="mailto:contato@neon.digital">contato@neon.digital</a></p>
-                            <p><a href="mailto:comercial@neon.digital">comercial@neon.digital</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-item">
-                        <div class="info-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Horário</h3>
-                            <p>Segunda - Sexta: 9h às 18h</p>
-                            <p>Sábado: 9h às 13h</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="form-contato">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Seu nome" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Seu email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="tel" class="form-control" placeholder="Seu telefone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option value="" disabled selected>Selecione um serviço</option>
-                                <option value="web">Desenvolvimento Web</option>
-                                <option value="app">Aplicativos Móveis</option>
-                                <option value="design">UI/UX Design</option>
-                                <option value="marketing">Marketing Digital</option>
-                                <option value="outro">Outro</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Sua mensagem" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="portfolio">
+    <h2>Portfólio</h2>
+    <p>Veja alguns de nossos projetos mais recentes com foco em usabilidade, performance e visual moderno.</p>
+  </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col footer-about">
-                    <div class="logo">
-                        <div class="logo-icon">N</div>
-                        <div class="logo-text">Neon</div>
-                    </div>
-                    <p>Transformamos ideias em realidade digital com soluções criativas e tecnologia inovadora.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Links Rápidos</h3>
-                    <ul class="footer-links">
-                        <li><a href="#hero">Home</a></li>
-                        <li><a href="#about">Sobre Nós</a></li>
-                        <li><a href="#services">Serviços</a></li>
-                        <li><a href="#portfolio">Portfólio</a></li>
-                        <li><a href="#contact">Contato</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Serviços</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Desenvolvimento Web</a></li>
-                        <li><a href="#">Aplicativos Móveis</a></li>
-                        <li><a href="#">UI/UX Design</a></li>
-                        <li><a href="#">Marketing Digital</a></li>
-                        <li><a href="#">Consultoria</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Newsletter</h3>
-                    <p>Assine nossa newsletter para receber novidades e atualizações.</p>
-                    <form class="newsletter-form">
-                        <div class="form-group">
-                            <input type="email" placeholder="Seu email" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Assinar</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 Neon Digital. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Fale conosco pelo e-mail: contato@meusite.com ou preencha nosso formulário de contato.</p>
+  </section>
 
-    <script>
-        // Menu mobile toggle
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-        
-        menuToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            menuToggle.innerHTML = navLinks.classList.contains('active') 
-                ? '<i class="fas fa-times"></i>' 
-                : '<i class="fas fa-bars"></i>';
-        });
+  <footer>
+    <p>&copy; 2025 MeuSite - Todos os direitos reservados.</p>
+  </footer>
 
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navLinks.classList.remove('active');
-                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Portfolio filter
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-                
-                const filterValue = button.getAttribute('data-filter');
-                
-                portfolioItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Form submission
-        const contactForm = document.getElementById('form-contato');
-        if (contactForm) {
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-                contactForm.reset();
-            });
-        }
-    </script>
+  <script>
+    // Menu responsivo (caso queira usar em mobile)
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("show");
+    }
+  </script>
 </body>
 </html>
