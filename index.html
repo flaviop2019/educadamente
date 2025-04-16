@@ -3,63 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Site One Page</title>
+  <title>One Page Responsivo</title>
   <style>
     :root {
+      --cor1: #f3f4f6;
+      --cor2: #e0f7fa;
+      --cor3: #fff3e0;
+      --cor4: #e8f5e9;
+      --cor5: #ede7f6;
       --primary: #4f46e5;
-      --dark: #111827;
-      --light: #f3f4f6;
-      --gray: #e5e7eb;
-      --blue-light: #eef2ff;
+      --text-dark: #111827;
+      --text-light: #ffffff;
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: var(--light);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-    header {
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://source.unsplash.com/1600x900/?technology') no-repeat center center/cover;
-      height: 100vh;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      max-width: 600px;
+      font-family: Arial, sans-serif;
     }
 
     nav {
-      background: white;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      z-index: 999;
     }
 
     .nav-container {
-      max-width: 1100px;
-      margin: 0 auto;
+      max-width: 1200px;
+      margin: auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -88,12 +66,12 @@
     }
 
     nav ul li {
-      margin: 0 15px;
+      margin-left: 20px;
     }
 
     nav a {
-      color: var(--dark);
       text-decoration: none;
+      color: var(--text-dark);
       font-weight: bold;
       transition: color 0.3s;
     }
@@ -102,72 +80,85 @@
       color: var(--primary);
     }
 
+    header {
+      background: url('https://source.unsplash.com/1600x600/?technology') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-top: 10px;
+    }
+
     section {
       padding: 60px 20px;
-      max-width: 1000px;
-      margin: auto;
     }
 
-    #sobre {
-      background-color: var(--gray);
-    }
-
-    #servicos {
-      background-color: white;
-    }
-
-    #portfolio {
-      background-color: var(--blue-light);
-    }
-
-    #contato {
-      background-color: var(--gray);
-    }
+    #sobre { background-color: var(--cor1); }
+    #servicos { background-color: var(--cor2); }
+    #portfolio { background-color: var(--cor3); }
+    #contato { background-color: var(--cor4); }
 
     section h2 {
       font-size: 2rem;
       margin-bottom: 20px;
+      text-align: center;
       color: var(--primary);
     }
 
-    .services, .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
+    section p {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
     }
 
     footer {
-      background: var(--dark);
-      color: white;
+      background-color: var(--cor5);
       text-align: center;
-      padding: 30px 10px;
+      padding: 20px;
+      color: #555;
     }
 
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
-        align-items: center;
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        left: 0;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+        cursor: pointer;
       }
 
       nav ul li {
-        margin: 10px 0;
+        margin: 15px 0;
       }
+    }
 
-      .nav-container {
-        flex-direction: column;
-      }
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
     }
   </style>
 </head>
@@ -176,10 +167,12 @@
   <nav>
     <div class="nav-container">
       <div class="logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo">
+        <!-- Logo visível -->
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo" />
         <span>MeuSite</span>
       </div>
-      <ul>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul id="nav-links">
         <li><a href="#sobre">Sobre</a></li>
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#portfolio">Portfólio</a></li>
@@ -190,60 +183,38 @@
 
   <header>
     <h1>Bem-vindo ao Meu Site</h1>
-    <p>Um layout moderno, responsivo e feito com HTML, CSS e JavaScript.</p>
+    <p>Este é um exemplo de site one page moderno, com cores distintas para cada seção.</p>
   </header>
 
   <section id="sobre">
     <h2>Sobre</h2>
-    <p>Sou um desenvolvedor apaixonado por criar experiências digitais incríveis. Trabalho com design moderno, performance e boas práticas.</p>
+    <p>Somos uma equipe apaixonada por tecnologia, design e soluções criativas. Criamos sites modernos, rápidos e que funcionam em qualquer dispositivo.</p>
   </section>
 
   <section id="servicos">
     <h2>Serviços</h2>
-    <div class="services">
-      <div class="card">
-        <h3>Web Design</h3>
-        <p>Criação de interfaces modernas e responsivas para sua aplicação ou site.</p>
-      </div>
-      <div class="card">
-        <h3>Desenvolvimento</h3>
-        <p>Aplicações em HTML, CSS, JavaScript e frameworks modernos.</p>
-      </div>
-      <div class="card">
-        <h3>Consultoria</h3>
-        <p>Ajuda técnica para melhorar seu produto digital e otimizar processos.</p>
-      </div>
-    </div>
+    <p>Oferecemos desenvolvimento web, design responsivo, otimização de SEO e muito mais para ajudar sua marca a crescer online.</p>
   </section>
 
   <section id="portfolio">
     <h2>Portfólio</h2>
-    <div class="portfolio">
-      <div class="card"><p>Projeto 1</p></div>
-      <div class="card"><p>Projeto 2</p></div>
-      <div class="card"><p>Projeto 3</p></div>
-    </div>
+    <p>Veja alguns de nossos projetos mais recentes com foco em usabilidade, performance e visual moderno.</p>
   </section>
 
   <section id="contato">
     <h2>Contato</h2>
-    <p>Entre em contato através do e-mail: <strong>seunome@email.com</strong></p>
+    <p>Fale conosco pelo e-mail: contato@meusite.com ou preencha nosso formulário de contato.</p>
   </section>
 
   <footer>
-    <p>&copy; 2025 - Todos os direitos reservados.</p>
+    <p>&copy; 2025 MeuSite - Todos os direitos reservados.</p>
   </footer>
 
   <script>
-    // Scroll suave
-    document.querySelectorAll('nav a').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
-    });
+    // Menu responsivo (caso queira usar em mobile)
+    function toggleMenu() {
+      document.getElementById("nav-links").classList.toggle("show");
+    }
   </script>
 </body>
 </html>
