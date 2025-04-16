@@ -191,7 +191,6 @@
   </nav>
 
   <header>
-    <img class="logo-header" src="https://raw.githubusercontent.com/flaviop2019/educadamente/main/images/Logo%20Educadamente-final-03.png" alt="Logo Educadamente">
     <h1>O conhecimento transforma vidas.</h1>
   </header>
   
@@ -225,6 +224,12 @@
     function toggleMenu() {
       document.getElementById("nav-links").classList.toggle("show");
     }
+    // Impede rolagem automática para o primeiro link ao carregar a página
+    window.addEventListener('load', function() {
+      if (window.location.hash === "#sobre") {
+        window.history.pushState("", document.title, window.location.pathname + window.location.search);
+      }
+    });
   </script>
 </body>
 </html>
