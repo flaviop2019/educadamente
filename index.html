@@ -24,7 +24,8 @@
       font-family: Arial, sans-serif;
       background-color: var(--bg-light);
       color: var(--text-dark);
-      font-size: 1.2rem;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     nav {
@@ -37,11 +38,11 @@
 
     .nav-container {
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
+      padding: 15px 20px;
     }
 
     .logo {
@@ -50,25 +51,31 @@
     }
 
     .logo img {
-      height: 100px;
+      height: 60px;
+      width: auto;
       margin-right: 10px;
     }
 
     .logo span {
       font-weight: bold;
-      font-size: 1.6rem;
+      font-size: 1.2rem;
       color: var(--laranja);
     }
 
     .div-header {
-      text-align:left;
-      margin-left: 30px;
-      float:left;
+      text-align: left;
+      padding: 0 20px;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .div-header span {
       font-weight: bold;
-      font-size: 3.8rem;
+      font-size: clamp(2rem, 6vw, 3.8rem);
+      line-height: 1.2;
+      display: inline-block;
+      margin-top: 20px;
     }
 
     nav ul {
@@ -77,14 +84,14 @@
     }
 
     nav ul li {
-      margin-left: 30px;
+      margin-left: 20px;
     }
 
     nav a {
       text-decoration: none;
       color: var(--text-dark);
       font-weight: bold;
-      font-size: 1.2rem;
+      font-size: 1rem;
       transition: color 0.3s;
     }
 
@@ -94,38 +101,56 @@
 
     header {
       min-height: 80vh; 
-      display: flex;  
-      justify-content: center; / 
-      align-items: center;  
-      flex-direction: column;  
-      text-align: center; 
-      background: url('images/background-02.png') no-repeat center center; 
-      background-size: cover;  
-      color: var(--text-light); / 
-      padding: 60px 20px;  
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('images/background-02.png') no-repeat center center;
+      background-size: cover;
+      color: var(--text-light);
+      padding: 60px 20px;
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
       margin-top: 20px;
     }
 
     header p {
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 3vw, 1.5rem);
       max-width: 800px;
       margin-top: 20px;
     }
 
     .logo-header {
-      height: 90vh;
+      max-height: 90vh;
+      width: auto;
     }
 
     section {
-      padding: 80px 20px;
+      padding: 60px 20px;
     }
 
     section h2 {
-      font-size: 2.8rem;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
       margin-bottom: 30px;
       text-align: center;
       color: var(--laranja);
@@ -133,21 +158,27 @@
 
     section p {
       max-width: 900px;
-      margin: 10px auto;
+      margin: 0 auto 20px;
       text-align: center;
-      font-size: 1.9rem;
-      line-height: 2.2rem;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      line-height: 1.6;
     }
 
     .video-container {
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      height: 100vh; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .video-container video {
+      max-width: 100%;
+      height: auto;
     }
 
     #sobre { background-color: #fff7f1; }
-    #servicos { background-color: var(--verde) }
+    #servicos { background-color: var(--verde); color: var(--text-light); }
+    #servicos h2 { color: var(--text-light); }
     #portfolio { background-color: #fef2e6; }
     #contato { background-color: #eafdf6; }
 
@@ -156,18 +187,29 @@
       text-align: center;
       padding: 25px;
       color: var(--text-light);
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
 
+    /* Media Queries */
     @media (max-width: 768px) {
+      .nav-container {
+        padding: 10px 15px;
+      }
+      
+      .logo img {
+        height: 50px;
+      }
+      
       nav ul {
         flex-direction: column;
         background-color: white;
         position: absolute;
         width: 100%;
-        top: 90px;
+        top: 80px;
         left: 0;
         display: none;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
       }
 
       nav ul.show {
@@ -177,16 +219,44 @@
       .menu-toggle {
         display: block;
         cursor: pointer;
+        font-size: 24px;
       }
 
       nav ul li {
-        margin: 15px 0;
+        margin: 10px 0;
+        padding: 0 20px;
+      }
+      
+      nav ul li a {
+        display: block;
+        padding: 10px 0;
+      }
+      
+      .div-header {
+        padding: 0 15px;
+      }
+      
+      section {
+        padding: 40px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo span {
+        font-size: 1rem;
+      }
+      
+      .div-header span {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+      }
+      
+      section p {
+        text-align: left;
       }
     }
 
     .menu-toggle {
       display: none;
-      font-size: 28px;
     }
   </style>
 </head>
@@ -196,7 +266,7 @@
     <div class="nav-container">
       <div class="logo">
         <img src="https://raw.githubusercontent.com/flaviop2019/educadamente/main/images/logo-educadamente-icon-01.png" alt="Logo" />
-        <span></span>
+        <span>Educadamente</span>
       </div>
       <div class="menu-toggle" onclick="toggleMenu()">☰</div>
       <ul id="nav-links">
@@ -209,10 +279,11 @@
   </nav>
 
   <header>
-    <div class="div-header">
-    <span>O conhecimento <br> transforma vidas.</span>
+    <div class="header-content">
+      <div class="div-header">
+        <span>O conhecimento transforma vidas.</span>
+      </div>
     </div>
-       
   </header>
   
   <section id="sobre">
@@ -225,7 +296,7 @@
   <section id="servicos">
     <h2>Serviços</h2>
     <div class="video-container">
-      <video width="600" controls>
+      <video controls playsinline>
           <source src="videos/video_para_o_site_educadametne.webm" type="video/webm">
           Seu navegador não suporta a tag de vídeo.
       </video>
@@ -250,6 +321,14 @@
     function toggleMenu() {
       document.getElementById("nav-links").classList.toggle("show");
     }
+    
+    // Fecha o menu quando um link é clicado
+    document.querySelectorAll('#nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById("nav-links").classList.remove("show");
+      });
+    });
+    
     // Impede rolagem automática para o primeiro link ao carregar a página
     window.addEventListener('load', function() {
       if (window.location.hash === "#sobre") {
