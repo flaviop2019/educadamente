@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>One Page Responsivo</title>
+  <title>Educadamente - Centro de Desenvolvimento</title>
   <style>
     :root {
       --cor1: #f3f4f6;
@@ -81,15 +81,20 @@
     }
 
     header {
-      background: url('https://source.unsplash.com/1600x600/?technology') center/cover no-repeat;
-      height: 100vh;
+      background: linear-gradient(to bottom right, #4f46e5, #3b82f6); /* fallback */
+      background-image: url('https://source.unsplash.com/1600x600/?technology');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       text-align: center;
       color: white;
-      padding: 20px;
+      padding: 40px 20px;
     }
 
     header h1 {
@@ -169,7 +174,7 @@
       <div class="logo">
         <!-- Logo visível -->
         <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="Logo" />
-        <span>MeuSite</span>
+        <span>Educadamente - Centro de Desenvolvimento</span>
       </div>
       <div class="menu-toggle" onclick="toggleMenu()">☰</div>
       <ul id="nav-links">
@@ -182,9 +187,13 @@
   </nav>
 
   <header>
-    <h1>Bem-vindo ao Meu Site</h1>
-    <p>Este é um exemplo de site one page moderno, com cores distintas para cada seção.</p>
+    <h1>Educadamente - Centro de Desenvolvimento</h1>
+    <p>O conhecimento transforma vidas.</p>
   </header>
+  <section id="sobre">
+    <h2>Educadamente - Centro de Desenvolvimento</h2>
+    <p>Somos uma equipe apaixonada por tecnologia, design e soluções criativas. Criamos sites modernos, rápidos e que funcionam em qualquer dispositivo.</p>
+  </section>
 
   <section id="sobre">
     <h2>Sobre</h2>
