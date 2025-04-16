@@ -9,6 +9,8 @@
       --primary: #4f46e5;
       --dark: #111827;
       --light: #f3f4f6;
+      --gray: #e5e7eb;
+      --blue-light: #eef2ff;
     }
 
     * {
@@ -55,15 +57,38 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo span {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
     nav ul {
       display: flex;
       list-style: none;
-      justify-content: center;
-      padding: 10px 0;
     }
 
     nav ul li {
-      margin: 0 20px;
+      margin: 0 15px;
     }
 
     nav a {
@@ -81,6 +106,22 @@
       padding: 60px 20px;
       max-width: 1000px;
       margin: auto;
+    }
+
+    #sobre {
+      background-color: var(--gray);
+    }
+
+    #servicos {
+      background-color: white;
+    }
+
+    #portfolio {
+      background-color: var(--blue-light);
+    }
+
+    #contato {
+      background-color: var(--gray);
     }
 
     section h2 {
@@ -115,16 +156,17 @@
     }
 
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-
       nav ul {
         flex-direction: column;
+        align-items: center;
       }
 
       nav ul li {
         margin: 10px 0;
+      }
+
+      .nav-container {
+        flex-direction: column;
       }
     }
   </style>
@@ -132,12 +174,18 @@
 <body>
 
   <nav>
-    <ul>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#servicos">Serviços</a></li>
-      <li><a href="#portfolio">Portfólio</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Logo">
+        <span>MeuSite</span>
+      </div>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#portfolio">Portfólio</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
   </nav>
 
   <header>
@@ -187,7 +235,7 @@
   </footer>
 
   <script>
-    // Opcional: animação suave ao clicar nos links
+    // Scroll suave
     document.querySelectorAll('nav a').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         e.preventDefault();
