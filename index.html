@@ -381,27 +381,42 @@ table {
 
   .topicos {
     display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
     justify-content: center;
-    gap: 60px;
-    margin-top: 50px;
-    text-align: center;
-    font-family: Arial, sans-serif;
+    margin-top: 30px;
   }
 
   .topico {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex: 1 1 calc(33.333% - 40px); /* 3 por linha com gap */
+    max-width: 180px;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
   .topico i {
-    font-size: 56px;
+    font-size: 48px; /* aproximadamente 1.5 cm */
+    color: #2c3e50;
     margin-bottom: 10px;
-    color: #333;
   }
 
   .topico span {
-    font-size: 18px;
+    display: block;
+    font-size: 16px;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .topico {
+      flex: 1 1 calc(50% - 40px); /* 2 por linha em telas menores */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .topico {
+      flex: 1 1 100%; /* 1 por linha em telas pequenas */
+    }
   }
 </style>
   
