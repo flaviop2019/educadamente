@@ -383,49 +383,49 @@ table {
     }
   }
 
-  topicos {
+  .topicos {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza os itens horizontalmente */
+    justify-content: center; /* Centraliza os itens */
     gap: 20px;
-    padding: 30px 0; /* 30px apenas na vertical */
-    margin: 30px auto; /* Margem mínima de 30px acima/abaixo */
-    max-width: 1200px; /* Limita a largura máxima */
+    padding: 30px 0;
+    margin: 30px auto;
+    max-width: 1200px;
   }
   
   .topico {
-    flex: 0 0 calc(33.333% - 20px); /* 3 por linha com gap */
-    text-align: center;
-    box-sizing: border-box;
-    min-width: 250px; /* Largura mínima por item */
+      width: calc(33.333% - 14px); /* Ajuste preciso para 3 colunas + gap */
+      text-align: center;
+      box-sizing: border-box;
+      min-width: 250px; /* Largura mínima */
   }
   
+  /* Ícones e textos (mantive seu estilo original) */
   .topico i {
-    font-size: 70px;  
-    color: var(--laranja);
-    margin-bottom: 10px;
+      font-size: 70px;  
+      color: var(--laranja);
+      margin-bottom: 10px;
   }
   
   .topico span {
-    display: block;
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-    padding: 0 10px; /* Evita quebra de texto */
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
   }
   
-  /* Responsivo */
-  @media (max-width: 900px) {
-    .topico {
-        flex: 0 0 calc(50% - 20px); /* 2 por linha */
-    }
+  /* Responsividade */
+  @media (max-width: 1000px) {
+      .topico {
+          width: calc(50% - 10px); /* 2 por linha */
+      }
   }
   
   @media (max-width: 600px) {
-    .topico {
-        flex: 0 0 100%; /* 1 por linha */
-        max-width: 300px; /* Limita largura em mobile */
-    }
+      .topico {
+          width: 100%; /* 1 por linha */
+          max-width: 300px;
+      }
   }
 </style>
   
