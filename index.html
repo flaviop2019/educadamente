@@ -379,15 +379,29 @@ table {
     }
   }
 
+  .topicos {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-top: 50px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
   .topico {
-    font-size: 1.2em;
-    margin: 10px 0;
-    text-align:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .topico i {
-    color: var(--laranja);
-    margin-right: 10px;
+    font-size: 56px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .topico span {
+    font-size: 18px;
   }
 </style>
   
@@ -453,26 +467,34 @@ estruturado!
     </p>
 
     <h3>Nossas Sequências Didáticas (em versão convencional e versão adaptada) </h3>
+
+    <div class="topicos">
+    <!-- Alfabetização -->
     <div class="topico">
-      <i class="fas fa-book-open"></i> Alfabetização
+      <i class="fas fa-book-open"></i>
+      <span>Alfabetização</span>
     </div>
-  
+
+    <!-- Língua Portuguesa (Opção 1) -->
     <div class="topico">
-      <i class="fas fa-font"></i> Língua Portuguesa - 4º ano
+      <i class="fas fa-language"></i>
+      <span>Língua Portuguesa - 4º ano</span>
     </div>
     <div class="topico">
-      <i class="fas fa-font"></i> Língua Portuguesa - 5º ano
+      <i class="fas fa-file-alt"></i>
+      <span>Língua Portuguesa - 5º ano</span>
     </div>
-  
+
+    <!-- Matemática (Opção 1) -->
     <div class="topico">
-      <i class="fas fa-square-root-alt"></i> Matemática - 4º ano
+      <i class="fas fa-square-root-alt"></i>
+      <span>Matemática - 4º ano</span>
     </div>
-    
     <div class="topico">
-      <i class="fas fa-square-root-alt"></i> Matemática - 5º ano
-      <!-- ou use este abaixo:
-      <i class="fas fa-calculator"></i> Matemática -->
+      <i class="fas fa-square-root-alt"></i>
+      <span>Matemática - 5º ano</span>
     </div>
+  </div>
 
     <h3>O que torna nosso material diferente? </h3>
     <p>Nosso material é totalmente alinhado aos objetivos educacionais da BNCC, com matriz de descritores que acompanha cada questão. </p>
