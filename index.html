@@ -382,21 +382,20 @@ table {
   .topicos {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
-    margin-top: 30px;
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
   }
 
   .topico {
-    flex: 1 1 calc(33.333% - 40px); /* 3 por linha com gap */
-    max-width: 180px;
+    width: calc(33.333% - 20px); /* 3 por linha com espaço */
     text-align: center;
-    padding: 20px;
     box-sizing: border-box;
   }
 
   .topico i {
-    font-size: 48px; /* aproximadamente 1.5 cm */
+    font-size: 48px; /* Tamanho grande: ~1.5cm */
     color: #2c3e50;
     margin-bottom: 10px;
   }
@@ -407,15 +406,16 @@ table {
     color: #333;
   }
 
+  /* Responsivo */
   @media (max-width: 768px) {
     .topico {
-      flex: 1 1 calc(50% - 40px); /* 2 por linha em telas menores */
+      width: calc(50% - 20px); /* 2 por linha em tablets */
     }
   }
 
   @media (max-width: 480px) {
     .topico {
-      flex: 1 1 100%; /* 1 por linha em telas pequenas */
+      width: 100%; /* 1 por linha em celular */
     }
   }
 </style>
