@@ -380,17 +380,24 @@ table {
   }
 
   .topicos {
-    display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 20px;
-
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+/*     max-width: 900px; */
+    margin: 40px auto;
+  
+    background-color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 12px;  
+    padding: 30px;  
   }
 
   .topico {
     width: calc(33.333% - 20px); /* 3 por linha com espaço */
     text-align: center;
     box-sizing: border-box;
+    margin-top:20px;
   }
 
   .topico i {
@@ -401,7 +408,8 @@ table {
 
   .topico span {
     display: block;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight:bold;
     color: #333;
   }
 
