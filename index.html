@@ -355,14 +355,21 @@ table {
   }
     
   .imagem-icon {
-    text-align: center;
-    vertical-align: middle;
+    display: block;
+    margin: 0 auto;
     max-height: 150px;
     width: 140px;
   }
-
+  
+  .img-col {
+      width: 100px; /* define um espaço mínimo, menor que o tamanho real da imagem */
+      padding: 0 5px;
+  }
+  
   .text-cell {
-    width: auto;
+      width: auto;
+      padding: 10px;
+      text-align: left;
   }
 
   @media (max-width: 900px) {
@@ -562,7 +569,7 @@ estruturado!
     <h2>Conheça nosso material</h2>
     <div class="container">
      <div class="tables-container">
-        <table>
+        <table style="width: 100%;">
           <thead>
               <tr>
                   <th colspan="4">ALFABETIZAÇÃO</th>
@@ -570,10 +577,9 @@ estruturado!
           </thead>
           <tbody>
               <tr>
-                  <td rowspan="3">
+                  <td rowspan="3" class="img-col">
                     <img src="images/teacher_2500963.png" 
-                     alt="Diversidade" class="imagem-icon"
-                     style="display: block; margin: 0 auto;">
+                     alt="Diversidade" class="imagem-icon">
                   </td>
                   <td class="text-cell">Primeira sequência didática – 2025</td>
                   <td rowspan="3">
@@ -584,12 +590,12 @@ estruturado!
                   <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
               </tr>
               <tr>
-                  <td>Segunda sequência didática – 2025</td>
-                  <td>Segunda sequência didática ADAPTADA – 2025</td>
+                  <td class="text-cell">Segunda sequência didática – 2025</td>
+                  <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
               </tr>
               <tr>
-                  <td>Terceira sequência didática – 2025</td>
-                  <td>Terceira sequência didática ADAPTADA – 2025</td>
+                  <td class="text-cell">Terceira sequência didática – 2025</td>
+                  <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
               </tr>
               <tr class="tr-verde">
                   <td colspan="2">
