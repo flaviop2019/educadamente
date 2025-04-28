@@ -873,6 +873,25 @@ estruturado!
         body.style.paddingRight = '0';
       }
     });
+
+
+    //media querie colspan tr_verde
+    function ajustarColspan() {
+      const tr = document.querySelector('.tr-verde td');
+      if (!tr) return; // Se não encontrar, não faz nada
+    
+      if (window.innerWidth <= 600) {
+        tr.setAttribute('colspan', '1');
+      } else {
+        tr.setAttribute('colspan', '2');
+      }
+    }
+    
+    // Executa ao carregar a página
+    window.addEventListener('load', ajustarColspan);
+    
+    // Executa ao redimensionar a janela
+    window.addEventListener('resize', ajustarColspan);
   </script>
 </body>
 </html>
