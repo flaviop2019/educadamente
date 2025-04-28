@@ -68,6 +68,93 @@
       color: var(--laranja);
     }
 
+	  /* MENU DESKTOP */
+    #nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    #nav-links li {
+      margin-left: 30px;
+    }
+    
+    #nav-links a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    #nav-links a:hover {
+      color: #01B08E;
+    }
+    
+    #nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #01B08E;
+      transition: width 0.3s;
+    }
+    
+    #nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* MENU HAMBURGUER */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: #111827;
+    }
+    
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      #nav-links {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 30px;
+        transition: all 0.5s ease;
+      }
+      
+      #nav-links.show {
+        left: 0;
+      }
+      
+      #nav-links li {
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+      }
+      
+      #nav-links a {
+        display: block;
+        padding: 15px;
+        font-size: 1.2rem;
+      }
+      
+      #nav-links a::after {
+        bottom: 10px;
+      }
+    }
+
     .div-header {
       text-align: left;
       left: -30;
@@ -779,6 +866,28 @@ estruturado!
         window.history.pushState("", document.title, window.location.pathname + window.location.search);
       }
     });
+
+
+	  //menu mobile
+	  function toggleMenu() {
+			const navLinks = document.getElementById('nav-links');
+			const menuToggle = document.querySelector('.menu-toggle');
+						
+			navLinks.classList.toggle('show');
+			menuToggle.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+			
+			// Impede a rolagem do corpo quando o menu está aberto
+			document.body.style.overflow = navLinks.classList.contains('show') ? 'hidden' : '';
+		}
+					
+		// Fecha o menu ao clicar em um link
+		document.querySelectorAll('#nav-links a').forEach(link => {
+			link.addEventListener('click', () => {
+				document.getElementById('nav-links').classList.remove('show');
+				document.querySelector('.menu-toggle').textContent = '☰';
+				document.body.style.overflow = '';
+			});
+		});
   </script>
 </body>
 </html>
