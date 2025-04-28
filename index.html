@@ -40,6 +40,7 @@
       position: sticky;
       top: 0;
       z-index: 999;
+      padding: 0 20px;
     }
 
     .nav-container {
@@ -48,7 +49,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-/*       padding: 15px 20px; */
+      padding: 15px 0;
+      position: relative;
     }
 
     .logo {
@@ -57,9 +59,10 @@
     }
 
     .logo img {
-      height: 100px;
+      height: 60px;
       width: auto;
       margin-right: 10px;
+      transition: height 0.3s;
     }
 
     .logo span {
@@ -70,22 +73,22 @@
 
     .div-header {
       text-align: left;
-      left: -30;
-      float:left;
       font-weight: bold;
       font-size: clamp(1.8rem, 6vw, 3rem);
       line-height: 1.2;
       margin-top: 20px;
       color: #fef2e6;
+      padding: 0 20px;
     }
 
-  .div-header > span {
-		text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-	}
+    .div-header > span {
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    }
 
     nav ul {
       display: flex;
       list-style: none;
+      transition: all 0.3s ease;
     }
 
     nav ul li {
@@ -98,10 +101,27 @@
       font-weight: bold;
       font-size: 1rem;
       transition: color 0.3s;
+      padding: 5px 0;
+      position: relative;
     }
 
     nav a:hover {
       color: var(--verde);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--verde);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     header {
@@ -132,6 +152,7 @@
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 20px;
     }
 
     header h1 {
@@ -166,6 +187,7 @@
       margin-bottom: 30px;
       text-align: center;
       color: var(--laranja);
+      padding: 0 20px;
     }
 
     section h3 {
@@ -173,8 +195,9 @@
       margin-bottom: 30px;
       text-align: center;
       color: var(--verde);
+      padding: 0 20px;
     }
-	  
+    
     section h4 {
       font-size: clamp(1.1rem, 4vw, 1.5rem);
       margin-bottom: 30px;
@@ -182,13 +205,13 @@
       color: var(--verde);
     }
 
-
     section p {
       max-width: 900px;
       margin: 0 auto 20px;
       text-align: center;
       font-size: clamp(1rem, 2.5vw, 1.2rem);
       line-height: 1.6;
+      padding: 0 20px;
     }
 
     .video-container {
@@ -217,10 +240,137 @@
       font-size: 1rem;
     }
 
+    .container {
+      max-width: 1200px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      margin: 0 auto; 
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--laranja);
+      margin-bottom: 20px;
+    }
+
+    .tables-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    thead {
+      background-color: var(--verde);
+      color: #ffffff;
+      font-size:1.8rem;
+    }
+
+    th {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #dddddd;
+    }
+
+    td {
+      font-size: 1rem;
+    }
+    
+    td a {
+      color: var(--laranja);
+      text-decoration: underline;
+    }
+    
+    td a:hover {
+      color: #01B08E;
+    }
+    
+    .tr-verde {
+      color: var(--verde);
+    }
+    
+    .tr-laranja {
+      color: var(--laranja);
+    }
+    
+    .imagem-icon {
+      display: block;
+      margin: 0 auto;
+      max-height: 150px;
+      width: 140px;
+    }
+    
+    .img-col {
+      width: 120px; 
+      padding: 15px 15px;
+    }
+    
+    .text-cell {
+      width: auto;
+      padding: 10px;
+      text-align: left;
+    }
+
+    .topicos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 20px;
+      margin: 30px auto;
+      max-width: 1200px;
+    }
+    
+    .topico {
+      width: calc(33.333% - 14px);
+      text-align: center;
+      box-sizing: border-box;
+      min-width: 250px;
+    }
+    
+    .topico i {
+      font-size: 70px;  
+      color: var(--laranja);
+      margin-bottom: 10px;
+    }
+    
+    .topico span {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Menu Hamburguer */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+      color: var(--text-dark);
+      transition: transform 0.3s;
+    }
+
+    .menu-toggle.active {
+      transform: rotate(90deg);
+    }
+
     /* Media Queries */
-    @media (max-width: 768px) {
-      .nav-container {
-        padding: 10px 15px;
+    @media (max-width: 992px) {
+      .topico {
+        width: calc(50% - 10px);
       }
       
       .logo img {
@@ -228,48 +378,74 @@
       }
       
       nav ul {
-        flex-direction: column;
-        background-color: white;
-        position: absolute;
+        position: fixed;
         top: 80px;
-        left: 0;
-        display: none;
-        padding: 20px 0;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 30px;
+        transition: left 0.3s ease;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        width: 100vw;
       }
 
       nav ul.show {
-        display: flex;
+        left: 0;
       }
 
       .menu-toggle {
         display: block;
-        cursor: pointer;
-        font-size: 24px;
       }
 
       nav ul li {
-        margin: 10px 0;
+        margin: 15px 0;
         padding: 0 20px;
+        width: 100%;
+        text-align: center;
       }
       
       nav ul li a {
         display: block;
         padding: 10px 0;
+        font-size: 1.2rem;
+      }
+      
+      nav a::after {
+        display: none;
       }
       
       .div-header {
-        padding: 0 15px;
+        padding: 0 20px;
       }
       
       section {
-        padding: 60px 15px;
-        margin-top:-60px;
+        padding: 60px 20px;
+        margin-top: -60px;
+      }
+      
+      .container {
+        padding: 15px;
+      }
+      
+      th, td {
+        padding: 10px;
+      }
+      
+      .img-col {
+        width: 100px;
+        padding: 10px;
       }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
+      .topico {
+        width: 100%;
+        max-width: 300px;
+      }
+      
       .logo span {
         font-size: 1rem;
       }
@@ -281,174 +457,71 @@
       section p {
         text-align: left;
       }
-    }
-
-    .menu-toggle {
-      display: none;
-    }
-
-  .container {
-    max-width: 1200px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    margin: 0 auto; 
-  }
-
-  h1 {
-    text-align: center;
-    color: var(--laranja);
-    margin-bottom: 20px;
-  }
-
-.tables-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-/*   table-layout: fixed;  */
-}
-
-  thead {
-    background-color: var(--verde);
-    color: #ffffff;
-    font-size:1.8rem;
-  }
-
-  th {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #dddddd;
-  }
-
-   td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #dddddd;
-  }
-
-  td {
-    font-size: 1rem;
-  }
-  
-  td a {
-    color: var(--laranja);
-    text-decoration: underline;
-  }
-  
-  td a:hover {
-    color: #01B08E; /* Cor verde ao passar o mouse */
-  }
-  .tr-verde {
-    color: var(--verde);
-  }
       
-  .tr-laranja {
-    color: var(--laranja);
-  }
-    
-  .imagem-icon {
-    display: block;
-    margin: 0 auto;
-    max-height: 150px;
-    width: 140px;
-  }
-  
-  .img-col {
-      width: 120px; 
-      padding: 15px 15px;
-  }
-  
-  .text-cell {
-      width: auto;
-      padding: 10px;
-      text-align: left;
-  }
-
-  @media (max-width: 900px) {
-    .tables-container {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 600px) {
-    td, th {
-      padding: 10px 5px;
-      font-size: 0.7rem;
-    }
-    
-    .tr-verde td {
-      display: block; /* Faz com que as células verdes fiquem uma em cima da outra */
-      width: 100% !important;
-    }
-  }
-
-  @media (max-width: 400px) {
-    td, th {
-      padding: 8px 3px;
-      font-size: 0.65rem;
-    }
-    
-    table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-  }
-
-  .topicos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centraliza os itens */
-    gap: 20px;
-    padding: 30px 0;
-    margin: 30px auto;
-    max-width: 1200px;
-  }
-  
-  .topico {
-      width: calc(33.333% - 14px); /* Ajuste preciso para 3 colunas + gap */
-      text-align: center;
-      box-sizing: border-box;
-      min-width: 250px; /* Largura mínima */
-  }
-  
-  /* Ícones e textos (mantive seu estilo original) */
-  .topico i {
-      font-size: 70px;  
-      color: var(--laranja);
-      margin-bottom: 10px;
-  }
-  
-  .topico span {
-      display: block;
-      font-size: 20px;
-      font-weight: bold;
-      color: #333;
-  }
-  
-  /* Responsividade */
-  @media (max-width: 1000px) {
-      .topico {
-          width: calc(50% - 10px); /* 2 por linha */
+      table {
+        display: block;
+        overflow-x: auto;
       }
-  }
-  
-  @media (max-width: 600px) {
-      .topico {
-          width: 100%; /* 1 por linha */
-          max-width: 300px;
+      
+      .tr-verde td {
+        display: block;
+        width: 100% !important;
       }
-  }
-</style>
-  
+    }
+
+    @media (max-width: 600px) {
+      td, th {
+        padding: 8px 5px;
+        font-size: 0.9rem;
+      }
+      
+      .imagem-icon {
+        max-height: 100px;
+        width: 90px;
+      }
+      
+      .img-col {
+        width: 80px;
+        padding: 5px;
+      }
+      
+      .text-cell {
+        padding: 5px;
+      }
+      
+      .topico i {
+        font-size: 50px;
+      }
+      
+      .topico span {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo img {
+        height: 40px;
+      }
+      
+      .menu-toggle {
+        font-size: 20px;
+      }
+      
+      nav ul {
+        top: 70px;
+        height: calc(100vh - 70px);
+      }
+      
+      td, th {
+        font-size: 0.8rem;
+      }
+      
+      .imagem-icon {
+        max-height: 80px;
+        width: 70px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -476,7 +549,7 @@ table {
     </div>
   </header>
   
-	<div style="height: 80px; margin-top: -80px;"></div>
+  <div style="height: 80px; margin-top: -80px;"></div>
   <section id="sobre">
     <h2>Sobre</h2>
     <p>Nosso objetivo é disseminar conhecimento, desenvolver habilidades e inspirar atitudes que transformam vidas.</p>
@@ -495,7 +568,7 @@ table {
     </div>
   </section>
 
-	<div style="height: 80px; margin-top: -140px;"></div>
+  <div style="height: 80px; margin-top: -140px;"></div>
   <section id="sequencias_didaticas">
     <h2> O que são Sequências Didáticas?</h2>
     <p>As sequências didáticas são conjuntos organizados de atividades com objetivos 
@@ -638,112 +711,112 @@ estruturado!
                 </tr>
             </tbody>
         </table>
-	       <table>
-	            <thead>
-	                <tr>
-	                    <th colspan="4">LÍNGUA PORTUGUESA – 5º ANO</th>
-	                </tr>
-	            </thead>
-	            <tbody>
-	                <tr>
-	                  <td rowspan="3" class="img-col">
-	                    <img src="images/img_livros_chatgpt.jpg" 
-	                     alt="Diversidade" class="imagem-icon">
-	                  </td>
-	                    <td class="text-cell">Primeira sequência didática – 2025</td>
-	                  <td rowspan="3" class="img-col">
-	                    <img src="images/img_quebra_cabecas_ChatGPT.jpg" 
-	                     alt="Diversidade" class="imagem-icon">
-	                  </td>
-	                    <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
-	                </tr>
-	                <tr>
-	                    <td class="text-cell">Segunda sequência didática – 2025</td>
-	                    <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
-	                </tr>
-	                <tr>
-	                    <td class="text-cell">Terceira sequência didática – 2025</td>
-	                    <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
-	                </tr>
-	                <tr class="tr-verde">
-	                    <td colspan="2">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
-	                    <td colspan="2">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
-	                </tr>
-	            </tbody>
-	        </table>
-	         <table>
-	            <thead>
-	              <tr>
-	                  <th colspan="4">MATEMÁTICA – 4º ANO</th>
-	              </tr>
-	            </thead>
-	            <tbody>
-	              <tr>
-	                <td rowspan="3" class="img-col">
-	                    <img src="images/img-ChatGPT-matematica.png" 
-	                     alt="Diversidade" class="imagem-icon">
-	                  </td>
-	                  <td class="text-cell">Primeira sequência didática – 2025</td>
-	                  <td rowspan="3" class="img-col">
-	                    <img src="images/img_arvore_maos_chatgpt.jpg" 
-	                     alt="Diversidade" class="imagem-icon">
-	                  </td>
-	                  <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
-	              </tr>
-	              <tr>
-	                  <td class="text-cell">Segunda sequência didática – 2025</td>
-	                  <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
-	              </tr>
-	              <tr>
-	                  <td class="text-cell">Terceira sequência didática – 2025</td>
-	                  <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
-	              </tr>
-	              <tr class="tr-verde">
-	                  <td colspan="2">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
-	                  <td colspan="2">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
-	              </tr>
-	            </tbody>
-	          </table>
+       <table>
+            <thead>
+                <tr>
+                    <th colspan="4">LÍNGUA PORTUGUESA – 5º ANO</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td rowspan="3" class="img-col">
+                    <img src="images/img_livros_chatgpt.jpg" 
+                     alt="Diversidade" class="imagem-icon">
+                  </td>
+                    <td class="text-cell">Primeira sequência didática – 2025</td>
+                  <td rowspan="3" class="img-col">
+                    <img src="images/img_quebra_cabecas_ChatGPT.jpg" 
+                     alt="Diversidade" class="imagem-icon">
+                  </td>
+                    <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
+                </tr>
+                <tr>
+                    <td class="text-cell">Segunda sequência didática – 2025</td>
+                    <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
+                </tr>
+                <tr>
+                    <td class="text-cell">Terceira sequência didática – 2025</td>
+                    <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
+                </tr>
+                <tr class="tr-verde">
+                    <td colspan="2">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
+                    <td colspan="2">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
+                </tr>
+            </tbody>
+        </table>
+         <table>
+            <thead>
+              <tr>
+                  <th colspan="4">MATEMÁTICA – 4º ANO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="3" class="img-col">
+                    <img src="images/img-ChatGPT-matematica.png" 
+                     alt="Diversidade" class="imagem-icon">
+                  </td>
+                  <td class="text-cell">Primeira sequência didática – 2025</td>
+                  <td rowspan="3" class="img-col">
+                    <img src="images/img_arvore_maos_chatgpt.jpg" 
+                     alt="Diversidade" class="imagem-icon">
+                  </td>
+                  <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
+              </tr>
+              <tr>
+                  <td class="text-cell">Segunda sequência didática – 2025</td>
+                  <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
+              </tr>
+              <tr>
+                  <td class="text-cell">Terceira sequência didática – 2025</td>
+                  <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
+              </tr>
+              <tr class="tr-verde">
+                  <td colspan="2">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
+                  <td colspan="2">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
+              </tr>
+            </tbody>
+          </table>
         
-	       <table>
-	          <thead>
-	              <tr>
-	                  <th colspan="4">MATEMÁTICA – 5º ANO</th>
-	              </tr>
-	          </thead>
-	          <tbody>
-	              <tr>
-	                <td rowspan="3" class="img-col">
-	                    <img src="images/img-ChatGP-matematica-2.jpg" 
-	                     alt="Diversidade" class="imagem-icon">
-	                  </td>
-	                  <td class="text-cell">Primeira sequência didática – 2025</td>
-	                  <td rowspan="3" class="img-col">
-	                    <img src="images/img_pessoas1_chatgpt.jpg" 
-	                     alt="Diversidade" class="imagem-icon">
-	                  </td>
-	                  <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
-	              </tr>
-	              <tr>
-	                  <td class="text-cell">Segunda sequência didática – 2025</td>
-	                  <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
-	              </tr>
-	              <tr>
-	                  <td class="text-cell">Terceira sequência didática – 2025</td>
-	                  <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
-	              </tr>
-	              <tr class="tr-verde">
-	                  <td colspan="2">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica </td>
-	                  <td colspan="2">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica</td>
-	              </tr>
-	          </tbody>
-	        </table>
-      	</div>
+       <table>
+          <thead>
+              <tr>
+                  <th colspan="4">MATEMÁTICA – 5º ANO</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                <td rowspan="3" class="img-col">
+                    <img src="images/img-ChatGP-matematica-2.jpg" 
+                     alt="Diversidade" class="imagem-icon">
+                  </td>
+                  <td class="text-cell">Primeira sequência didática – 2025</td>
+                  <td rowspan="3" class="img-col">
+                    <img src="images/img_pessoas1_chatgpt.jpg" 
+                     alt="Diversidade" class="imagem-icon">
+                  </td>
+                  <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
+              </tr>
+              <tr>
+                  <td class="text-cell">Segunda sequência didática – 2025</td>
+                  <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
+              </tr>
+              <tr>
+                  <td class="text-cell">Terceira sequência didática – 2025</td>
+                  <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
+              </tr>
+              <tr class="tr-verde">
+                  <td colspan="2">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica </td>
+                  <td colspan="2">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica</td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     
     <div style="height: 80px; margin-top: -80px;"></div>
     <h3>
-    	<em>Transformando o ensino com propósito e excelência!</em>
+      <em>Transformando o ensino com propósito e excelência!</em>
     </h3>
   </section>
   <section id="contato">
@@ -763,13 +836,22 @@ estruturado!
 
   <script>
     function toggleMenu() {
-      document.getElementById("nav-links").classList.toggle("show");
+      const navLinks = document.getElementById("nav-links");
+      const menuToggle = document.querySelector(".menu-toggle");
+      
+      navLinks.classList.toggle("show");
+      menuToggle.classList.toggle("active");
+      
+      // Adiciona/remove a classe no body para evitar rolagem quando o menu está aberto
+      document.body.classList.toggle("menu-open");
     }
     
     // Fecha o menu quando um link é clicado
     document.querySelectorAll('#nav-links a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById("nav-links").classList.remove("show");
+        document.querySelector(".menu-toggle").classList.remove("active");
+        document.body.classList.remove("menu-open");
       });
     });
     
@@ -777,6 +859,18 @@ estruturado!
     window.addEventListener('load', function() {
       if (window.location.hash === "#sobre") {
         window.history.pushState("", document.title, window.location.pathname + window.location.search);
+      }
+    });
+    
+    // Adiciona padding ao body quando o menu está aberto para evitar que o conteúdo pule
+    const menuToggle = document.querySelector('.menu-toggle');
+    const body = document.body;
+    
+    menuToggle.addEventListener('click', function() {
+      if (document.getElementById('nav-links').classList.contains('show')) {
+        body.style.paddingRight = '0';
+      } else {
+        body.style.paddingRight = '0';
       }
     });
   </script>
