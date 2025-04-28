@@ -32,6 +32,8 @@
       color: var(--dark);
       font-size: clamp(1.3rem, 6vw, 2.7rem);
       line-height: 1.6;
+			overflow-x: hidden; 
+  		width: 100%;
     }
 
     nav {
@@ -40,6 +42,9 @@
       position: sticky;
       top: 0;
       z-index: 999;
+			width: 100vw; 
+		  margin: 0;
+		  padding: 0;
     }
 
     .nav-container {
@@ -49,6 +54,7 @@
       justify-content: space-between;
       align-items: center;
 /*       padding: 15px 20px; */
+			width: 100%;
     }
 
     .logo {
@@ -153,7 +159,36 @@
       #nav-links a::after {
         bottom: 10px;
       }
+
+			nav ul {
+		    width: 100vw !important; /* Força 100% da viewport */
+		    left: 0 !important;
+		    margin: 0;
+		    padding: 0;
+		  }
     }
+
+		.menu-toggle {
+		  display: none; /* Escondido por padrão */
+		  cursor: pointer;
+		  font-size: 28px; /* Tamanho aumentado */
+		  padding: 15px;
+		  z-index: 1001; /* Garante que fique acima de outros elementos */
+		}
+		
+		@media (max-width: 768px) {
+		  .menu-toggle {
+		    display: block; /* Mostra apenas em telas pequenas */
+		    position: relative; /* Posicionamento relativo */
+		    right: 0; /* Alinha à direita */
+		  }
+		  
+		  /* Ajuste para o menu aberto */
+		  #nav-links.show {
+		    display: flex !important; /* Sobrescreve qualquer display: none */
+		    left: 0 !important; /* Garante que venha para a posição 0 */
+		  }
+		}
 
     .div-header {
       text-align: left;
@@ -870,24 +905,22 @@ estruturado!
 
 	  //menu mobile
 	  function toggleMenu() {
-			const navLinks = document.getElementById('nav-links');
-			const menuToggle = document.querySelector('.menu-toggle');
-						
-			navLinks.classList.toggle('show');
-			menuToggle.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
-			
-			// Impede a rolagem do corpo quando o menu está aberto
-			document.body.style.overflow = navLinks.classList.contains('show') ? 'hidden' : '';
-		}
-					
-		// Fecha o menu ao clicar em um link
-		document.querySelectorAll('#nav-links a').forEach(link => {
-			link.addEventListener('click', () => {
-				document.getElementById('nav-links').classList.remove('show');
-				document.querySelector('.menu-toggle').textContent = '☰';
-				document.body.style.overflow = '';
-			});
-		});
+	    const navLinks = document.getElementById('nav-links');
+	    const menuToggle = document.querySelector('.menu-toggle');
+	    
+	    navLinks.classList.toggle('show');
+	    menuToggle.textContent = navLinks.classList.contains('show') ? '✕' : '☰';
+	    document.body.style.overflow = navLinks.classList.contains('show') ? 'hidden' : '';
+	  }
+	
+	  // Fecha o menu ao clicar nos links
+	  document.querySelectorAll('#nav-links a').forEach(link => {
+	    link.addEventListener('click', () => {
+	      document.getElementById('nav-links').classList.remove('show');
+	      document.querySelector('.menu-toggle').textContent = '☰';
+	      document.body.style.overflow = '';
+	    });
+	  });
   </script>
 </body>
 </html>
