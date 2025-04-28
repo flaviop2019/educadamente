@@ -521,6 +521,50 @@
         width: 70px;
       }
     }
+
+    .mobile-fullwidth {
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-fullwidth {
+        display: block;
+        width: 100% !important;
+        colspan: 1 !important;
+        white-space: normal;
+        word-wrap: break-word;
+        padding: 15px !important;
+        text-align: center;
+      }
+      
+      /* Esconder a segunda célula em cada par */
+      .tr-verde td.mobile-fullwidth:nth-child(even) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Forçar colspan=1 em telas pequenas */
+      .tr-verde td[colspan="2"] {
+        display: block;
+        width: 100% !important;
+        colspan: 1 !important;
+      }
+      
+      /* Permitir quebra de linha e ajustar espaçamento */
+      .tr-verde td {
+        white-space: normal !important;
+        word-wrap: break-word;
+        padding: 10px !important;
+        text-align: center !important;
+      }
+      
+      /* Esconder a segunda célula quando em modo de coluna única */
+      .tr-verde td:nth-child(2) {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -670,10 +714,10 @@ estruturado!
                                 <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
                         </tr>
                         <tr class="tr-verde">
-                                <td colspan="2">
-                                        Facilite a alfabetização dos seus alunos com uma sequência didática completa e estruturada! <a href="">CLIQUE AQUI</a>  e garanta um material que pode tornar o processo de leitura e escrita mais leve e significativo para seus alunos.  
-                                </td>
-                                <td colspan="2">Facilite a alfabetização dos seus alunos com uma sequência didática ADAPTADA completa e estruturada! <a href="">CLIQUE AQUI</a> e garanta um material que pode tornar o processo de leitura e escrita mais leve e significativo para seus alunos.</td>
+                          <td colspan="2" class="mobile-fullwidth">
+                                  Facilite a alfabetização dos seus alunos com uma sequência didática completa e estruturada! <a href="">CLIQUE AQUI</a>  e garanta um material que pode tornar o processo de leitura e escrita mais leve e significativo para seus alunos.  
+                          </td>
+                          <td colspan="2" class="mobile-fullwidth">Facilite a alfabetização dos seus alunos com uma sequência didática ADAPTADA completa e estruturada! <a href="">CLIQUE AQUI</a> e garanta um material que pode tornar o processo de leitura e escrita mais leve e significativo para seus alunos.</td>
                         </tr>
                 </tbody>
         </table>
@@ -706,8 +750,8 @@ estruturado!
                     <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
                 </tr>
                 <tr class="tr-verde">
-                    <td colspan="2">Pare de perder tempo planejando! CLIQUE AQUI e adquira sua sequência didática: um material pronto para aplicar, que vai proporcionar aulas mais produtivas e interessantes.</td>
-                    <td colspan="2">Pare de perder tempo planejando! CLIQUE AQUI e adquira sua sequência didática: um material pronto para aplicar, que vai proporcionar aulas mais produtivas e interessantes.</td>
+                    <td colspan="2" class="mobile-fullwidth">Pare de perder tempo planejando! CLIQUE AQUI e adquira sua sequência didática: um material pronto para aplicar, que vai proporcionar aulas mais produtivas e interessantes.</td>
+                    <td colspan="2" class="mobile-fullwidth">Pare de perder tempo planejando! CLIQUE AQUI e adquira sua sequência didática: um material pronto para aplicar, que vai proporcionar aulas mais produtivas e interessantes.</td>
                 </tr>
             </tbody>
         </table>
@@ -739,8 +783,8 @@ estruturado!
                     <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
                 </tr>
                 <tr class="tr-verde">
-                    <td colspan="2">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
-                    <td colspan="2">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
+                    <td colspan="2" class="mobile-fullwidth">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
+                    <td colspan="2" class="mobile-fullwidth">Economize tempo e tenha mais eficiência! CLIQUE AQUI e compre nossa sequência didática, que apresenta estratégias práticas e alinhadas à BNCC para tornar o aprendizado mais dinâmico e eficaz.</td>
                 </tr>
             </tbody>
         </table>
@@ -772,8 +816,8 @@ estruturado!
                   <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
               </tr>
               <tr class="tr-verde">
-                  <td colspan="2">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
-                  <td colspan="2">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
+                  <td colspan="2" class="mobile-fullwidth">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
+                  <td colspan="2" class="mobile-fullwidth">CLIQUE AQUI e transforme suas aulas de Matemática com uma sequência didática estruturada, dinâmica e alinhada à BNCC. Planejamento pronto para aplicar e garantir melhores resultados!</td>
               </tr>
             </tbody>
           </table>
@@ -806,8 +850,8 @@ estruturado!
                   <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
               </tr>
               <tr class="tr-verde">
-                  <td colspan="2">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica </td>
-                  <td colspan="2">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica</td>
+                  <td colspan="2" class="mobile-fullwidth">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica </td>
+                  <td colspan="2" class="mobile-fullwidth">Quer tornar a Matemática mais envolvente e fácil para seus alunos? CLIQUE AQUI e adquira nossa sequência didática: um recurso ideal para transformar sua prática pedagógica</td>
               </tr>
           </tbody>
         </table>
@@ -876,22 +920,7 @@ estruturado!
 
 
     //media querie colspan tr_verde
-    function ajustarColspan() {
-      const tr = document.querySelector('.tr-verde td');
-      if (!tr) return; // Se não encontrar, não faz nada
-    
-      if (window.innerWidth <= 600) {
-        tr.setAttribute('colspan', '1');
-      } else {
-        tr.setAttribute('colspan', '2');
-      }
-    }
-    
-    // Executa ao carregar a página
-    window.addEventListener('load', ajustarColspan);
-    
-    // Executa ao redimensionar a janela
-    window.addEventListener('resize', ajustarColspan);
+     
   </script>
 </body>
 </html>
