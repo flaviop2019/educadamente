@@ -535,7 +535,7 @@
         white-space: normal;
         word-wrap: break-word;
         padding: 15px !important;
-        text-align: center;
+        text-align: left;
       }
       
       /* Esconder a segunda célula em cada par */
@@ -557,12 +557,16 @@
         white-space: normal !important;
         word-wrap: break-word;
         padding: 10px !important;
-        text-align: center !important;
+        text-align: left !important;
       }
       
       /* Esconder a segunda célula quando em modo de coluna única */
-      .tr-verde td:nth-child(2) {
-        display: none;
+      .tr-verde td {
+        display: block;
+        width: 100% !important;
+        white-space: normal !important;
+        padding: 15px !important;
+        text-align: left;
       }
     }
   </style>
@@ -859,6 +863,7 @@ estruturado!
     </div>
     
     <div style="height: 80px; margin-top: -80px;"></div>
+    <div style="height: 80px"></div>
     <h3>
       <em>Transformando o ensino com propósito e excelência!</em>
     </h3>
