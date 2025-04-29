@@ -252,66 +252,83 @@
   }
 
   .tables-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-
-  thead {
-    background-color: var(--verde);
-    color: #ffffff;
-    font-size: 1.8rem;
-  }
-
-  th, td {
-    padding: 15px;
-    text-align: left;
-    border-bottom: 1px solid #dddddd;
-  }
-
-  th {
-    text-align: center;
-  }
-
-  td a {
-    color: var(--laranja);
-    text-decoration: underline;
-  }
-
-  td a:hover {
-    color: var(--verde);
-  }
-
-  .tr-verde {
-    color: var(--verde);
-  }
-
-  .tr-laranja {
-    color: var(--laranja);
-  }
-
-  .imagem-icon {
-    display: block;
-    margin: 0 auto;
-    max-height: 150px;
-    width: 140px;
-  }
-
-  .img-col {
-    width: 120px;
-    padding: 15px;
-  }
-
-  .text-cell {
-    width: auto;
-    padding: 10px;
-  }
+	  display: grid;
+	  grid-template-columns: 1fr;
+	  gap: 20px;
+	  width: 100%;
+	  max-width: 1200px;
+	  margin: 0 auto;
+	}
+	
+	table {
+	  width: 100%;
+	  border-collapse: collapse;
+	  margin: 20px 0;
+	  table-layout: fixed;
+	}
+	
+	thead {
+	  background-color: var(--verde);
+	  color: var(--text-light);
+	}
+	
+	th {
+	  padding: 12px 15px;
+	  text-align: center;
+	  font-size: 1.2rem;
+	  font-weight: 600;
+	}
+	
+	td {
+	  padding: 12px 15px;
+	  text-align: left;
+	  vertical-align: middle;
+	  font-size: 0.9rem;
+	  line-height: 1.4;
+	}
+	
+	/* Células de imagem */
+	.img-col {
+	  width: 120px;
+	  padding: 10px;
+	  text-align: center;
+	}
+	
+	.imagem-icon {
+	  width: 100px;
+	  height: auto;
+	  display: block;
+	  margin: 0 auto;
+	}
+	
+	/* Células de texto */
+	.text-cell {
+	  padding: 10px 15px;
+	  font-size: 0.9rem;
+	}
+	
+	/* Linhas especiais */
+	.tr-verde td {
+	  color: var(--verde);
+	  text-align: center;
+	  font-size: 0.9rem;
+	  padding: 15px;
+	}
+	
+	.tr-laranja td {
+	  color: var(--laranja);
+	}
+	
+	/* Links nas tabelas */
+	td a {
+	  color: var(--laranja);
+	  text-decoration: underline;
+	  font-weight: 500;
+	}
+	
+	td a:hover {
+	  color: var(--verde);
+	}
 
   /* ===== COMPONENTES DE TÓPICOS ===== */
   .topicos {
@@ -403,6 +420,57 @@
       font-size: 1.2rem;
       border-bottom: 1px solid #f0f0f0;
     }
+
+		/* ===== RESPONSIVIDADE DAS TABELAS ===== */
+@media (max-width: 768px) {
+  .img-col {
+    width: 80px;
+    padding: 5px;
+  }
+  
+  .imagem-icon {
+    width: 70px;
+  }
+  
+  th, td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+  
+  .text-cell, .tr-verde td {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .img-col {
+    width: 60px;
+  }
+  
+  .imagem-icon {
+    width: 50px;
+  }
+  
+  th {
+    font-size: 0.9rem;
+  }
+  
+  td {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+  
+  .tr-verde td {
+    display: block;
+    width: 100% !important;
+  }
+}
 
     /* AJUSTES DE LAYOUT */
     .div-header {
