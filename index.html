@@ -41,10 +41,10 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
       top: 0;
-      z-index: 999;
-			width: 100vw; 
 		  margin: 0;
 		  padding: 0;
+		  z-index: 1000;
+		  width: 100%;
     }
 
     .nav-container {
@@ -113,18 +113,24 @@
     }
     
     /* MENU HAMBURGUER */
-    .menu-toggle {
-      display: none;
-      cursor: pointer;
-      font-size: 24px;
-      color: #111827;
-    }
+     
     
     /* RESPONSIVIDADE */
     @media (max-width: 768px) {
       .menu-toggle {
-        display: block;
+				display: block !important;
+		    position: absolute;
+		    right: 20px;
+		    top: 50%;
+		    transform: translateY(-50%);
+		    font-size: 28px;
+		    z-index: 1001;
+		    background: transparent;
+		    border: none;
+		    padding: 5px 10px;
+		    margin: 0;
       }
+			
 
 			nav {
 		    width: 100%;
@@ -135,62 +141,53 @@
 		    padding: 10px 15px;
 		    width: 100%;
 		    position: fixed;
+				padding: 10px 15px;
+		    height: 70px; /* Altura fixa para o header */
+		    display: flex;
+		    align-items: center;
 		  }
 
 			.logo img {
 		    height: 50px;
+    		transition: all 0.3s;
 		  }
       
       #nav-links {
 		    display: none;
 		    position: fixed;
-		    top: 80px;
+		    top: 70px; /* Começa abaixo do header */
 		    left: 0;
 		    width: 100%;
+		    height: calc(100vh - 70px);
 		    background-color: white;
 		    flex-direction: column;
 		    padding: 20px 0;
 		    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-		    z-index: 998;
+		    overflow-y: auto;
 		  }
       
       #nav-links.show {
-    display: flex;
-  }
+		    display: flex;
+		  }
 
-  /* Estilo dos itens do menu mobile */
-  #nav-links li {
-    margin: 10px 0;
-    width: 100%;
-    text-align: center;
-  }
+		  #nav-links li {
+		    margin: 10px 0;
+		    width: 100%;
+		    text-align: center;
+		  }
+		
+		  #nav-links a {
+		    display: block;
+		    padding: 15px;
+		    font-size: 1.2rem;
+		  }
 
-  #nav-links a {
-    display: block;
-    padding: 15px;
-    font-size: 1.2rem;
-  }
-
-  /* Garante que o toggle seja visível */
-  .menu-toggle {
-    display: block !important;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 28px;
-    z-index: 999;
-    background: white;
-    border: none;
-    padding: 5px 10px;
-  }
-
-  /* Remove margens indesejadas */
-  body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-  }
+		  /* Remove margens indesejadas */
+		  body {
+		    margin: 0;
+		    padding: 0;
+		    overflow-x: hidden;
+		  }
     }
 
 		.menu-toggle {
@@ -912,26 +909,26 @@ estruturado!
 
   <script>
     function toggleMenu() {
-      document.getElementById("nav-links").classList.toggle("show");
-    }
-    
-    // Fecha o menu quando um link é clicado
-    document.querySelectorAll('#nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById("nav-links").classList.remove("show");
-      });
-    });
-    
-    // Impede rolagem automática para o primeiro link ao carregar a página
-    window.addEventListener('load', function() {
-      if (window.location.hash === "#sobre") {
-        window.history.pushState("", document.title, window.location.pathname + window.location.search);
-      }
-    });
-
-
-	  //menu mobile
-	  function toggleMenu() {
+	      document.getElementById("nav-links").classList.toggle("show");
+	    }
+	    
+	    // Fecha o menu quando um link é clicado
+	    document.querySelectorAll('#nav-links a').forEach(link => {
+	      link.addEventListener('click', () => {
+	        document.getElementById("nav-links").classList.remove("show");
+	      });
+	    });
+	    
+	    // Impede rolagem automática para o primeiro link ao carregar a página
+	    window.addEventListener('load', function() {
+	      if (window.location.hash === "#sobre") {
+	        window.history.pushState("", document.title, window.location.pathname + window.location.search);
+	      }
+	    });
+	
+	
+		  //menu mobile
+		  function toggleMenu() {
 	    const navLinks = document.getElementById('nav-links');
 	    const menuToggle = document.querySelector('.menu-toggle');
 	    
@@ -946,6 +943,16 @@ estruturado!
 	      document.getElementById('nav-links').classList.remove('show');
 	      document.querySelector('.menu-toggle').textContent = '☰';
 	      document.body.style.overflow = '';
+	      
+	      // Rolagem suave para a seção
+	      const targetId = link.getAttribute('href');
+	      const targetElement = document.querySelector(targetId);
+	      if (targetElement) {
+	        window.scrollTo({
+	          top: targetElement.offsetTop - 70, // Considera a altura do header
+	          behavior: 'smooth'
+	        });
+	      }
 	    });
 	  });
   </script>
