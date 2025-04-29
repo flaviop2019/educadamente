@@ -125,47 +125,72 @@
       .menu-toggle {
         display: block;
       }
+
+			nav {
+		    width: 100%;
+		    overflow: hidden;
+		  }
+
+			nav-container {
+		    padding: 10px 15px;
+		    width: 100%;
+		    position: relative;
+		  }
+
+			.logo img {
+		    height: 50px;
+		  }
       
       #nav-links {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background-color: white;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        padding-top: 30px;
-        transition: all 0.5s ease;
-      }
+		    display: none;
+		    position: fixed;
+		    top: 80px;
+		    left: 0;
+		    width: 100%;
+		    background-color: white;
+		    flex-direction: column;
+		    padding: 20px 0;
+		    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+		    z-index: 998;
+		  }
       
       #nav-links.show {
-        left: 0;
-      }
-      
-      #nav-links li {
-        margin: 15px 0;
-        width: 100%;
-        text-align: center;
-      }
-      
-      #nav-links a {
-        display: block;
-        padding: 15px;
-        font-size: 1.2rem;
-      }
-      
-      #nav-links a::after {
-        bottom: 10px;
-      }
+    display: flex;
+  }
 
-			nav ul {
-		    width: 100vw !important; /* Força 100% da viewport */
-		    left: 0 !important;
-		    margin: 0;
-		    padding: 0;
-		  }
+  /* Estilo dos itens do menu mobile */
+  #nav-links li {
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  #nav-links a {
+    display: block;
+    padding: 15px;
+    font-size: 1.2rem;
+  }
+
+  /* Garante que o toggle seja visível */
+  .menu-toggle {
+    display: block !important;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    z-index: 999;
+    background: white;
+    border: none;
+    padding: 5px 10px;
+  }
+
+  /* Remove margens indesejadas */
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
     }
 
 		.menu-toggle {
