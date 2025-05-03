@@ -175,23 +175,23 @@ header::after {
 	@media (max-width: 768px) {
     /* ... (outros estilos existentes) ... */
     
-    /* Ajuste para a logo */
-    .logo img {
-        height: 95px; /* Aumentei de 50px para 70px */
-        transition: all 0.3s; /* Mantém a transição suave */
+    .nav-container .logo img {
+        height: 80px !important; /* Força o tamanho desejado */
+        width: auto !important;
+        margin-right: 15px !important;
     }
     
-    /* Garante que o container do logo não quebre */
+    /* Ajuste adicional para o container */
     .nav-container {
-        padding: 10px 15px;
-        height: auto; /* Mudei de 70px para auto para acomodar a logo maior */
-        min-height: 70px; /* Altura mínima para manter o espaçamento */
+        padding: 15px 20px !important;
+        height: auto !important;
+        min-height: 90px !important; /* Espaço extra para a logo maior */
     }
     
-    /* Ajuste fino para o menu-toggle */
+    /* Centraliza o menu-toggle verticalmente com a logo maior */
     .menu-toggle {
-        top: 50%;
-        transform: translateY(-50%);
+        top: 50% !important;
+        transform: translateY(-50%) !important;
     }
 	}
 
