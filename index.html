@@ -38,32 +38,41 @@
   }
 
   /* ===== ESTRUTURA PRINCIPAL ===== */
-  header {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column; /* Altera a direção do flex para coluna */
-    justify-content: flex-start; /* Alinha os itens no topo */
-    align-items: center;
-    background: url('images/background-02.png') no-repeat center center;
-    background-size: cover;
-    color: var(--text-light);
-    position: relative;
-    width: 100%;
-    padding: 0;
-}
-
-.header-content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 50%; /* Empurra o conteúdo para baixo da imagem */
-    text-align: center; /* Centraliza o texto */
-}
+	 header {
+	    min-height: 80vh;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    background: url('images/background-02.png') no-repeat center center;
+	    background-size: cover;
+	    color: var(--text-light);
+	    position: relative;
+	    width: 100%;
+	    padding: 0;
+	}
+	
+	/* Camada escura sobre a imagem (opcional) */
+	header::after {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(0, 0, 0, 0.3); /* Ajuste a opacidade conforme necessário */
+	}
+	
+	.header-content {
+	    position: relative;
+	    z-index: 1;
+	    width: 100%;
+	    max-width: 1200px;
+	    margin: 0 auto;
+	    padding: 20px;
+	    text-align: center;
+	}
 
 .div-header {
-    background-color: rgba(0, 0, 0, 0.5); /* Opcional: fundo semi-transparente para melhor legibilidade */
     padding: 20px;
     border-radius: 10px;
 		text-align: left;
@@ -78,22 +87,26 @@
 	font-size: clamp(1.3rem, 6vw, 3.3rem);
 }
 
-/* Para telas menores */
+/* Em telas pequenas: */
 @media (max-width: 768px) {
     header {
+        flex-direction: column; /* Empilha imagem e texto verticalmente */
         min-height: auto;
-        background-size: 100% auto; /* Faz a imagem ocupar a largura total */
-        background-position: top center; /* Alinha a imagem no topo */
+        padding: 0;
+        background-size: 100% auto; /* Garante que a imagem ocupe toda a largura */
     }
-    
-    .header-content {
-        padding-top: 50vh; /* Ajusta a posição do texto */
-    }
-}
 
-@media (max-width: 480px) {
+    /* Remove o overlay em telas pequenas (opcional) */
+    header::after {
+        display: none;
+    }
+
     .header-content {
-        padding-top: 40vh; /* Ajuste conforme necessário para telas muito pequenas */
+        position: static; /* Remove o posicionamento absoluto */
+        padding: 20px;
+        background: white; /* Fundo branco para o texto (opcional) */
+        color: black; /* Cor do texto em telas pequenas (ajuste conforme necessário) */
+        width: 100%;
     }
 }
 
