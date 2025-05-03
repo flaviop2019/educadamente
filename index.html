@@ -41,7 +41,8 @@
   header {
     min-height: 80vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Altera a direção do flex para coluna */
+    justify-content: flex-start; /* Alinha os itens no topo */
     align-items: center;
     background: url('images/background-02.png') no-repeat center center;
     background-size: cover;
@@ -49,24 +50,42 @@
     position: relative;
     width: 100%;
     padding: 0;
-  }
+}
 
-  header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .header-content {
+.header-content {
     position: relative;
     z-index: 1;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-  }
+    padding-top: 60vh; /* Empurra o conteúdo para baixo da imagem */
+    text-align: center; /* Centraliza o texto */
+}
+
+.div-header {
+    background-color: rgba(0, 0, 0, 0.5); /* Opcional: fundo semi-transparente para melhor legibilidade */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Para telas menores */
+@media (max-width: 768px) {
+    header {
+        min-height: auto;
+        background-size: 100% auto; /* Faz a imagem ocupar a largura total */
+        background-position: top center; /* Alinha a imagem no topo */
+    }
+    
+    .header-content {
+        padding-top: 50vh; /* Ajusta a posição do texto */
+    }
+}
+
+@media (max-width: 480px) {
+    .header-content {
+        padding-top: 40vh; /* Ajuste conforme necessário para telas muito pequenas */
+    }
+}
 
   section {
     width: 100%;
