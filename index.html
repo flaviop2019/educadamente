@@ -38,44 +38,44 @@
   }
 
   /* ===== ESTRUTURA PRINCIPAL ===== */
-	 header {
-	    min-height: 80vh;
-	    display: flex;
-	    justify-content: center;
-	    align-items: center;
-	    background: url('images/background-02.png') no-repeat center center;
-	    background-size: cover;
-	    color: var(--text-light);
-	    position: relative;
-	    width: 100%;
-	    padding: 0;
-	}
-	
-	/* Camada escura sobre a imagem (opcional) */
-	header::after {
-	    content: '';
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    height: 100%;
-	    background: rgba(0, 0, 0, 0.3); /* Ajuste a opacidade conforme necessário */
-	}
-	
-	.header-content {
-	    position: relative;
-	    z-index: 1;
-	    width: 100%;
-	    max-width: 1200px;
-	    margin: 0 auto;
-	    padding: 20px;
-	    text-align: center;
-	}
+ header {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('images/background-02.png') no-repeat center center;
+    background-size: cover;
+    color: var(--text-light);
+    position: relative;
+    width: 100%;
+    padding: 0;
+}
+
+/* Camada escura sobre a imagem (opcional) */
+header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
 
 .div-header {
     padding: 20px;
     border-radius: 10px;
-		text-align: left;
+    text-align: left;
     font-weight: bold;
     line-height: 1.2;
     margin-top: 20px;
@@ -83,30 +83,40 @@
 }
 
 .div-header > span {
-	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-	font-size: clamp(1.3rem, 6vw, 3.3rem);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    font-size: clamp(1.3rem, 6vw, 3.3rem);
 }
 
-/* Em telas pequenas: */
+/* --- Telas pequenas (mobile) --- */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Empilha imagem e texto verticalmente */
+        display: block; /* Muda de flex para block para separar imagem e texto */
         min-height: auto;
         padding: 0;
-        background-size: 100% auto; /* Garante que a imagem ocupe toda a largura */
+        background-size: 100% 50vh; /* Define altura fixa para a imagem */
+        background-position: top center; /* Garante que a imagem fique no topo */
     }
 
-    /* Remove o overlay em telas pequenas (opcional) */
+    /* Remove o overlay em telas pequenas */
     header::after {
         display: none;
     }
 
     .header-content {
-        position: static; /* Remove o posicionamento absoluto */
-        padding: 20px;
-        background: white; /* Fundo branco para o texto (opcional) */
-        color: black; /* Cor do texto em telas pequenas (ajuste conforme necessário) */
-        width: 100%;
+        position: static; /* Volta ao fluxo normal do documento */
+        padding: 30px 20px;
+        background: white;
+        color: black; /* Cor do texto em mobile */
+    }
+
+    .div-header {
+        color: black; /* Ajusta cor do texto para mobile */
+        text-align: center; /* Centraliza o texto em mobile */
+        margin-top: 0;
+    }
+
+    .div-header > span {
+        text-shadow: none; /* Remove sombra se atrapalhar em fundo branco */
     }
 }
 
