@@ -172,6 +172,29 @@ header::after {
     color: var(--laranja);
   }
 
+	@media (max-width: 768px) {
+    /* ... (outros estilos existentes) ... */
+    
+    /* Ajuste para a logo */
+    .logo img {
+        height: 70px; /* Aumentei de 50px para 70px */
+        transition: all 0.3s; /* Mantém a transição suave */
+    }
+    
+    /* Garante que o container do logo não quebre */
+    .nav-container {
+        padding: 10px 15px;
+        height: auto; /* Mudei de 70px para auto para acomodar a logo maior */
+        min-height: 70px; /* Altura mínima para manter o espaçamento */
+    }
+    
+    /* Ajuste fino para o menu-toggle */
+    .menu-toggle {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
   /* MENU DESKTOP */
   #nav-links {
     display: flex;
