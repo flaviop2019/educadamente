@@ -327,12 +327,13 @@ table {
   border-collapse: collapse;
   margin: 20px 0;
   table-layout: fixed;
+  border: 1px solid #ccc; /* Adicionado para visualização */
 }
 
 thead {
-  background-color: var(--verde);
-  color: var(--text-light);
-	text-align:center;
+  background-color: var(--verde); /* Certifique-se que --verde está definido */
+  color: var(--text-light); /* Certifique-se que --text-light está definido */
+  text-align: center;
 }
 
 th {
@@ -340,6 +341,7 @@ th {
   text-align: center;
   font-size: 1.8rem;
   font-weight: 600;
+  border: 1px solid #ccc; /* Adicionado para visualização */
 }
 
 td {
@@ -348,6 +350,7 @@ td {
   vertical-align: middle;
   font-size: 1.2rem;
   line-height: 1.4;
+  border: 1px solid #ccc; /* Adicionado para visualização */
 }
 
 /* Células de imagem */
@@ -355,6 +358,7 @@ td {
   width: 150px;
   padding: 10px;
   text-align: center;
+  vertical-align: middle; /* Alinha verticalmente no desktop */
 }
 
 .imagem-icon {
@@ -368,104 +372,123 @@ td {
 .text-cell {
   padding: 10px 15px;
   font-size: 1.2rem;
+  vertical-align: middle; /* Alinha verticalmente no desktop */
 }
 
 /* Linhas especiais */
 .tr-verde td {
-  color: var(--verde);
+  color: var(--verde); /* Certifique-se que --verde está definido */
   text-align: center;
   font-size: 1.2rem;
   padding: 15px;
+  background-color: #e8f5e9; /* Fundo leve para destacar */
 }
 
 .tr-laranja td {
-  color: var(--laranja);
+  color: var(--laranja); /* Certifique-se que --laranja está definido */
 }
 
 /* Links nas tabelas */
 td a {
-  color: var(--laranja);
+  color: var(--laranja); /* Certifique-se que --laranja está definido */
   text-decoration: underline;
   font-weight: 500;
 }
 
 td a:hover {
-  color: var(--verde);
+  color: var(--verde); /* Certifique-se que --verde está definido */
 }
 
-/* Estilos para telas menores (responsivo) */
-@media screen and (max-width: 768px) {
+
+/* === CSS PARA TELAS MENORES (ex: <= 768px) === */
+@media (max-width: 768px) {
+
+  /* Remove layout de tabela e faz elementos empilharem */
+  table, thead, tbody, tr, th, td {
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Garante que padding/border não aumentem a largura */
+  }
+
+  /* Remove bordas internas da tabela que não fazem sentido no layout block */
+  th, td {
+    border: none;
+    border-bottom: 1px solid #eee; /* Adiciona separador sutil entre blocos */
+  }
   table {
-    display: flex;
-    flex-direction: column;
+    border: none; /* Remove borda externa da tabela */
   }
 
-  /* Título */
-  thead tr {
-    display: block;
-  }
 
-  th[colspan="4"] {
-    display: block;
-    text-align: center;
-    padding: 12px;
+  /* Estilo do cabeçalho (Título) */
+  thead {
+    background-color: transparent; /* Remove cor de fundo do thead */
+  }
+  th {
+    /* Mantém a cor de fundo e texto originais */
     background-color: var(--verde);
     color: var(--text-light);
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 1.5rem; /* Levemente menor para mobile */
+    font-weight: 600;
+    margin-bottom: 10px; /* Espaço abaixo do título */
+    border-bottom: none; /* Remove borda inferior do th */
   }
 
-  /* Grupo da primeira imagem + textos normais */
-  .mobile-group-1 {
-    display: flex;
-    margin-bottom: 20px;
+  /* Esconde o efeito do rowspan e colspan */
+  td[rowspan], th[colspan] {
+    rowspan: 1;
+    colspan: 1;
   }
 
-  .mobile-img-left {
-    width: 30%;
+  /* Centraliza conteúdo das células de texto e imagem */
+  td {
+    text-align: center;
+    padding: 10px 15px; /* Ajusta padding */
+    font-size: 1.1rem; /* Ajusta fonte */
+  }
+  td:last-child {
+    border-bottom: none; /* Remove a borda do último td de cada "grupo" visual */
   }
 
-  .mobile-texts-right {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
+
+  /* Ajusta as imagens */
+  td.img-col {
+    padding-top: 15px;
+    padding-bottom: 5px;
+  }
+  .imagem-icon {
+    width: 100px; /* Imagem menor para mobile */
+    height: auto;
+    margin: 0 auto; /* Centraliza */
   }
 
-  /* Grupo da segunda imagem + textos adaptados */
-  .mobile-group-2 {
-    display: flex;
-    margin-bottom: 20px;
-  }
+  /* Ajusta células de texto */
+   td.text-cell {
+     padding: 8px 15px;
+     line-height: 1.4;
+   }
 
-  .mobile-img-right {
-    width: 30%;
+  /* Estilo específico para a linha verde */
+  tr.tr-verde {
+    margin-top: 15px; /* Espaço antes da seção verde */
   }
-
-  .mobile-texts-left {
-    width: 70%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Mensagens verdes */
-  .tr-verde {
-    display: block;
-  }
-
   .tr-verde td {
-    display: block;
-    margin-bottom: 15px;
+    display: block; /* Garante que são blocos */
+    width: 100%;
+    color: var(--verde);
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 15px;
+    background-color: #e8f5e9; /* Mantém fundo leve */
+    border-bottom: 1px solid #eee; /* Separador */
   }
+  /* Como são dois TDs na mesma TR, o display:block já os empilha. */
+   .tr-verde td:last-child {
+     border-bottom: none; /* Remove borda do último elemento */
+   }
 
-  /* Esconder elementos originais */
-  tbody tr {
-    display: none;
-  }
-
-  /* Mostrar apenas os grupos móveis */
-  .mobile-group-1,
-  .mobile-group-2,
-  .tr-verde {
-    display: block;
-  }
 }
 
   /* ===== COMPONENTES DE TÓPICOS ===== */
