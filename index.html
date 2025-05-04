@@ -303,94 +303,195 @@ header::after {
   #sequencias_didaticas { background-color: #fdfdfd; }
   #contato { background-color: #eafdf6; }
 
-  /* ===== COMPONENTES DE TABELA ===== */
-  .container {
-    max-width: 1200px;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-  }
+  /* Estilos para telas maiores (default) */
+.container {
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+}
 
-  .tables-container {
-	  display: grid;
-	  grid-template-columns: 1fr;
-	  gap: 20px;
-	  width: 100%;
-	  max-width: 1200px;
-	  margin: 0 auto;
-	}
-	
-	table {
-	  width: 100%;
-	  border-collapse: collapse;
-	  margin: 20px 0;
-	  table-layout: fixed;
-	}
-	
-	thead {
-	  background-color: var(--verde);
-	  color: var(--text-light);
-	}
-	
-	th {
-	  padding: 12px 15px;
-	  text-align: center;
-	  font-size: 1.8rem;
-	  font-weight: 600;
-	}
-	
-	td {
-	  padding: 12px 15px;
-	  text-align: left;
-	  vertical-align: middle;
-	  font-size: 1.2rem;
-	  line-height: 1.4;
-	}
-	
-	/* Células de imagem */
-	.img-col {
-	  width: 150px;
-	  padding: 10px;
-	  text-align: center;
-	}
-	
-	.imagem-icon {
-	  width: 140px;
-	  height: auto;
-	  display: block;
-	  margin: 0 auto;
-	}
-	
-	/* Células de texto */
-	.text-cell {
-	  padding: 10px 15px;
-	  font-size: 1.2rem;
-	}
-	
-	/* Linhas especiais */
-	.tr-verde td {
-	  color: var(--verde);
-	  text-align: center;
-	  font-size: 1.2rem;
-	  padding: 15px;
-	}
-	
-	.tr-laranja td {
-	  color: var(--laranja);
-	}
-	
-	/* Links nas tabelas */
-	td a {
-	  color: var(--laranja);
-	  text-decoration: underline;
-	  font-weight: 500;
-	}
-	
-	td a:hover {
-	  color: var(--verde);
-	}
+.tables-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  table-layout: fixed;
+}
+
+thead {
+  background-color: var(--verde);
+  color: var(--text-light);
+}
+
+th {
+  padding: 12px 15px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+td {
+  padding: 12px 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+/* Células de imagem */
+.img-col {
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+}
+
+.imagem-icon {
+  width: 140px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Células de texto */
+.text-cell {
+  padding: 10px 15px;
+  font-size: 1.2rem;
+}
+
+/* Linhas especiais */
+.tr-verde td {
+  color: var(--verde);
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 15px;
+}
+
+.tr-laranja td {
+  color: var(--laranja);
+}
+
+/* Links nas tabelas */
+td a {
+  color: var(--laranja);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+td a:hover {
+  color: var(--verde);
+}
+
+/* Estilos para telas menores (responsivo) */
+@media screen and (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  
+  thead tr {
+    display: none;
+  }
+  
+  /* Título da tabela */
+  th[colspan="4"] {
+    display: block;
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 12px 15px;
+    background-color: var(--verde);
+    color: var(--text-light);
+  }
+  
+  /* Linhas da tabela */
+  tr {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Células de imagem */
+  .img-col {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .imagem-icon {
+    width: 140px;
+    margin: 0 auto 15px;
+  }
+  
+  /* Células de texto */
+  .text-cell {
+    padding: 5px 15px;
+    font-size: 1.2rem;
+    text-align: left;
+  }
+  
+  /* Linhas especiais */
+  .tr-verde td {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  /* Ajuste para as linhas com imagens e textos */
+  tr:not(.tr-verde) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  tr:not(.tr-verde) td {
+    width: 100%;
+  }
+  
+  /* Primeira imagem com seus textos */
+  tr:first-child td:first-child {
+    order: 1;
+  }
+  
+  tr:first-child td:nth-child(2) {
+    order: 2;
+  }
+  
+  /* Segunda imagem com seus textos */
+  tr:nth-child(2) td:first-child {
+    order: 3;
+  }
+  
+  tr:nth-child(2) td:nth-child(2) {
+    order: 4;
+  }
+  
+  /* Terceira imagem com seus textos */
+  tr:nth-child(3) td:first-child {
+    order: 5;
+  }
+  
+  tr:nth-child(3) td:nth-child(2) {
+    order: 6;
+  }
+  
+  /* Mensagens verdes */
+  .tr-verde td {
+    order: 7;
+  }
+  
+  .tr-verde td:last-child {
+    order: 8;
+  }
+}
 
   /* ===== COMPONENTES DE TÓPICOS ===== */
   .topicos {
@@ -493,44 +594,15 @@ header::after {
   .imagem-icon {
     width: 70px;
   }
-  
-  th, td {
-    padding: 8px 10px;
-    font-size: 0.8rem;
-  }
-  
-  .text-cell, .tr-verde td {
-    font-size: 0.8rem;
-    padding: 10px;
-  }
 }
 
 @media (max-width: 480px) {
-  table {
-    display: block;
-    overflow-x: auto;
-  }
-  
   .img-col {
     width: 60px;
   }
   
   .imagem-icon {
     width: 50px;
-  }
-  
-  th {
-    font-size: 0.9rem;
-  }
-  
-  td {
-    font-size: 0.75rem;
-    padding: 6px 8px;
-  }
-  
-  .tr-verde td {
-    display: block;
-    width: 100% !important;
   }
 }
 
@@ -543,23 +615,12 @@ header::after {
       padding: 60px 15px;
       margin-top: -60px;
     }
-
-    /* TABELAS MOBILE */
-    .tr-verde td {
-      display: block;
-      width: 100% !important;
-    }
   }
 
   @media (max-width: 600px) {
     .topico {
       width: 100%;
       max-width: 300px;
-    }
-
-    td, th {
-      padding: 10px 5px;
-      font-size: 0.7rem;
     }
   }
 
@@ -574,17 +635,6 @@ header::after {
 
     section p {
       text-align: left;
-    }
-
-    td, th {
-      padding: 8px 3px;
-      font-size: 0.65rem;
-    }
-
-    table {
-      display: block;
-      overflow-x: auto;
-      white-space: nowrap;
     }
   }
 </style>
