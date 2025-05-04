@@ -395,99 +395,100 @@ td a:hover {
 
 /* Estilos para telas menores (responsivo) */
 @media screen and (max-width: 768px) {
+  /* Transformar a tabela em blocos */
   table {
     display: block;
-    width: 100%;
-    border-collapse: collapse;
   }
 
+  /* Manter o cabeçalho como está */
   thead tr {
-    display: block;
+    display: table;
+    width: 100%;
   }
 
+  th[colspan="4"] {
+    display: table-cell;
+  }
+
+  /* Corpo da tabela como blocos */
   tbody {
     display: block;
   }
 
-  /* Título da tabela */
-  th[colspan="4"] {
-    display: block;
-    text-align: center;
-    font-size: 1.8rem;
-    padding: 12px 15px;
-    background-color: var(--verde);
-    color: var(--text-light);
-    width: 100%;
-  }
-
-  /* Linhas normais - transformar em blocos */
+  /* Linhas como blocos */
   tr {
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    overflow: hidden;
   }
 
-  /* Primeira linha com imagem esquerda e textos normais */
+  /* Primeira linha - imagem esquerda e primeiro texto */
   tr:nth-child(1) {
     display: flex;
     flex-wrap: wrap;
   }
 
   tr:nth-child(1) .img-col {
-    width: 40%;
-    padding-right: 10px;
+    width: 30%;
+    height: auto;
   }
 
   tr:nth-child(1) .text-cell {
-    width: 60%;
-    padding-left: 10px;
+    width: 70%;
+    padding: 10px;
   }
 
-  /* Segunda linha com imagem direita e textos adaptados */
-  tr:nth-child(2) {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  tr:nth-child(2) .img-col {
-    width: 40%;
-    padding-right: 10px;
-  }
-
-  tr:nth-child(2) .text-cell {
-    width: 60%;
-    padding-left: 10px;
-  }
-
-  /* Terceira linha (originalmente vazia) - esconder */
+  /* Segunda e terceira linhas - apenas textos */
+  tr:nth-child(2),
   tr:nth-child(3) {
-    display: none;
+    margin-left: 30%;
+    width: 70%;
+    padding: 10px;
+    margin-bottom: 0;
   }
 
-  /* Linhas de texto verde */
+  /* Adicionar a imagem direita após os textos normais */
+  tr:nth-child(3):after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* Imagem direita (vamos reposicioná-la) */
+  tr:nth-child(1) .img-col:nth-child(3) {
+    display: block;
+    width: 30%;
+    float: left;
+    margin-top: 20px;
+  }
+
+  /* Textos adaptados (vamos reposicioná-los) */
+  tr:nth-child(1) .text-cell:nth-child(4),
+  tr:nth-child(2) .text-cell:nth-child(2),
+  tr:nth-child(3) .text-cell:nth-child(2) {
+    display: block;
+    width: 70%;
+    float: right;
+    margin-top: 20px;
+    padding: 10px;
+  }
+
+  /* Mensagens verdes */
   .tr-verde {
     display: block;
-    width: 100%;
-    margin-top: 15px;
+    margin-top: 20px;
   }
 
   .tr-verde td {
     display: block;
-    width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
-  /* Ajustes para as células */
-  td {
-    display: block;
-    padding: 8px 0;
-  }
-
-  /* Imagens */
+  /* Ajustar imagens */
   .imagem-icon {
     width: 100%;
     max-width: 140px;
     height: auto;
-    margin: 0 auto;
   }
 }
 
