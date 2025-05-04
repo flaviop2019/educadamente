@@ -395,100 +395,76 @@ td a:hover {
 
 /* Estilos para telas menores (responsivo) */
 @media screen and (max-width: 768px) {
-  /* Transformar a tabela em blocos */
   table {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Manter o cabeçalho como está */
+  /* Título */
   thead tr {
-    display: table;
-    width: 100%;
+    display: block;
   }
 
   th[colspan="4"] {
-    display: table-cell;
-  }
-
-  /* Corpo da tabela como blocos */
-  tbody {
     display: block;
+    text-align: center;
+    padding: 12px;
+    background-color: var(--verde);
+    color: var(--text-light);
   }
 
-  /* Linhas como blocos */
-  tr {
-    display: block;
-    margin-bottom: 15px;
-    overflow: hidden;
-  }
-
-  /* Primeira linha - imagem esquerda e primeiro texto */
-  tr:nth-child(1) {
+  /* Grupo da primeira imagem + textos normais */
+  .mobile-group-1 {
     display: flex;
-    flex-wrap: wrap;
+    margin-bottom: 20px;
   }
 
-  tr:nth-child(1) .img-col {
+  .mobile-img-left {
     width: 30%;
-    height: auto;
   }
 
-  tr:nth-child(1) .text-cell {
+  .mobile-texts-right {
     width: 70%;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* Segunda e terceira linhas - apenas textos */
-  tr:nth-child(2),
-  tr:nth-child(3) {
-    margin-left: 30%;
-    width: 70%;
-    padding: 10px;
-    margin-bottom: 0;
+  /* Grupo da segunda imagem + textos adaptados */
+  .mobile-group-2 {
+    display: flex;
+    margin-bottom: 20px;
   }
 
-  /* Adicionar a imagem direita após os textos normais */
-  tr:nth-child(3):after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  /* Imagem direita (vamos reposicioná-la) */
-  tr:nth-child(1) .img-col:nth-child(3) {
-    display: block;
+  .mobile-img-right {
     width: 30%;
-    float: left;
-    margin-top: 20px;
   }
 
-  /* Textos adaptados (vamos reposicioná-los) */
-  tr:nth-child(1) .text-cell:nth-child(4),
-  tr:nth-child(2) .text-cell:nth-child(2),
-  tr:nth-child(3) .text-cell:nth-child(2) {
-    display: block;
+  .mobile-texts-left {
     width: 70%;
-    float: right;
-    margin-top: 20px;
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
   }
 
   /* Mensagens verdes */
   .tr-verde {
     display: block;
-    margin-top: 20px;
   }
 
   .tr-verde td {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 
-  /* Ajustar imagens */
-  .imagem-icon {
-    width: 100%;
-    max-width: 140px;
-    height: auto;
+  /* Esconder elementos originais */
+  tbody tr {
+    display: none;
+  }
+
+  /* Mostrar apenas os grupos móveis */
+  .mobile-group-1,
+  .mobile-group-2,
+  .tr-verde {
+    display: block;
   }
 }
 
@@ -584,16 +560,7 @@ td a:hover {
     }
 
 		/* ===== RESPONSIVIDADE DAS TABELAS ===== */
-@media (max-width: 768px) {
-  .img-col {
-    width: 80px;
-    padding: 5px;
-  }
-  
-  .imagem-icon {
-    width: 70px;
-  }
-}
+ 
 
 @media (max-width: 480px) {
   .img-col {
@@ -759,40 +726,61 @@ estruturado!
     <div class="container">
        <div class="tables-container">
         <table style="width: 100%;">
-                <thead>
-                        <tr>
-                                <th colspan="4">ALFABETIZAÇÃO</th>
-                        </tr>
-                </thead>
-                <tbody>
-                        <tr>
-                                <td rowspan="3" class="img-col">
-                                        <img src="images/img_professora_chatgpt_editado.jpg" 
-                                         alt="Diversidade" class="imagem-icon">
-                                </td>
-                                <td class="text-cell">Primeira sequência didática – 2025</td>
-                                <td rowspan="3" class="img-col">
-                                        <img src="images/img_maos_coloridas_ChatGPT.jpg" 
-                                         alt="Diversidade" class="imagem-icon">
-                                </td>
-                                <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
-                        </tr>
-                        <tr>
-                                <td class="text-cell">Segunda sequência didática – 2025</td>
-                                <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
-                        </tr>
-                        <tr>
-                                <td class="text-cell">Terceira sequência didática – 2025</td>
-                                <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
-                        </tr>
-                        <tr class="tr-verde">
-                                <td colspan="2">
-                                        Facilite a alfabetização dos seus alunos com uma sequência didática completa e estruturada! <a href="">CLIQUE AQUI</a>  e garanta um material que pode tornar o processo de leitura e escrita mais leve e significativo para seus alunos.  
-                                </td>
-                                <td colspan="2">Facilite a alfabetização dos seus alunos com uma sequência didática ADAPTADA completa e estruturada! <a href="">CLIQUE AQUI</a> e garanta um material que pode tornar o processo de leitura e escrita mais leve e significativo para seus alunos.</td>
-                        </tr>
-                </tbody>
-        </table>
+				  <thead>
+				    <tr>
+				      <th colspan="4">LÍNGUA PORTUGUESA – 4º ANO</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <!-- Grupo móvel 1 - Imagem esquerda + textos normais -->
+				    <div class="mobile-group-1">
+				      <div class="mobile-img-left">
+				        <img src="images/img_menino_escrevendo_chatgpt.jpg" alt="Diversidade" class="imagem-icon">
+				      </div>
+				      <div class="mobile-texts-right">
+				        <div class="text-cell">Primeira sequência didática – 2025</div>
+				        <div class="text-cell">Segunda sequência didática – 2025</div>
+				        <div class="text-cell">Terceira sequência didática – 2025</div>
+				      </div>
+				    </div>
+				    
+				    <!-- Grupo móvel 2 - Imagem direita + textos adaptados -->
+				    <div class="mobile-group-2">
+				      <div class="mobile-img-right">
+				        <img src="images/img_pessoas2_chatgpt.jpg" alt="Diversidade" class="imagem-icon">
+				      </div>
+				      <div class="mobile-texts-left">
+				        <div class="text-cell">Primeira sequência didática ADAPTADA – 2025</div>
+				        <div class="text-cell">Segunda sequência didática ADAPTADA – 2025</div>
+				        <div class="text-cell">Terceira sequência didática ADAPTADA – 2025</div>
+				      </div>
+				    </div>
+				
+				    <!-- Linhas originais (escondidas em mobile) -->
+				    <tr>
+				      <td rowspan="3" class="img-col">
+				        <img src="images/img_menino_escrevendo_chatgpt.jpg" alt="Diversidade" class="imagem-icon">
+				      </td>
+				      <td class="text-cell">Primeira sequência didática – 2025</td>
+				      <td rowspan="3" class="img-col">
+				        <img src="images/img_pessoas2_chatgpt.jpg" alt="Diversidade" class="imagem-icon">
+				      </td>
+				      <td class="text-cell">Primeira sequência didática ADAPTADA – 2025</td>
+				    </tr>
+				    <tr>
+				      <td class="text-cell">Segunda sequência didática – 2025</td>
+				      <td class="text-cell">Segunda sequência didática ADAPTADA – 2025</td>
+				    </tr>
+				    <tr>
+				      <td class="text-cell">Terceira sequência didática – 2025</td>
+				      <td class="text-cell">Terceira sequência didática ADAPTADA – 2025</td>
+				    </tr>
+				    <tr class="tr-verde">
+				      <td colspan="2">Pare de perder tempo planejando! CLIQUE AQUI e adquira sua sequência didática: um material pronto para aplicar, que vai proporcionar aulas mais produtivas e interessantes.</td>
+				      <td colspan="2">Pare de perder tempo planejando! CLIQUE AQUI e adquira sua sequência didática: um material pronto para aplicar, que vai proporcionar aulas mais produtivas e interessantes.</td>
+				    </tr>
+				  </tbody>
+				</table>
   
         <table style="width: 100%;">
             <thead>
