@@ -332,6 +332,7 @@ table {
 thead {
   background-color: var(--verde);
   color: var(--text-light);
+	text-align:center;
 }
 
 th {
@@ -394,14 +395,20 @@ td a:hover {
 
 /* Estilos para telas menores (responsivo) */
 @media screen and (max-width: 768px) {
-  table, thead, tbody, th, td, tr {
+  table {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  thead tr {
     display: block;
   }
-  
-  thead tr {
-    display: none;
+
+  tbody {
+    display: block;
   }
-  
+
   /* Título da tabela */
   th[colspan="4"] {
     display: block;
@@ -410,86 +417,77 @@ td a:hover {
     padding: 12px 15px;
     background-color: var(--verde);
     color: var(--text-light);
-  }
-  
-  /* Linhas da tabela */
-  tr {
-    margin-bottom: 15px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Células de imagem */
-  .img-col {
     width: 100%;
-    padding: 10px;
-    text-align: center;
   }
-  
-  .imagem-icon {
-    width: 140px;
-    margin: 0 auto 15px;
-  }
-  
-  /* Células de texto */
-  .text-cell {
-    padding: 5px 15px;
-    font-size: 1.2rem;
-    text-align: left;
-  }
-  
-  /* Linhas especiais */
-  .tr-verde td {
+
+  /* Linhas normais - transformar em blocos */
+  tr {
     display: block;
-    margin-top: 10px;
-    text-align: center;
+    margin-bottom: 20px;
   }
-  
-  /* Ajuste para as linhas com imagens e textos */
-  tr:not(.tr-verde) {
+
+  /* Primeira linha com imagem esquerda e textos normais */
+  tr:nth-child(1) {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
   }
-  
-  tr:not(.tr-verde) td {
+
+  tr:nth-child(1) .img-col {
+    width: 40%;
+    padding-right: 10px;
+  }
+
+  tr:nth-child(1) .text-cell {
+    width: 60%;
+    padding-left: 10px;
+  }
+
+  /* Segunda linha com imagem direita e textos adaptados */
+  tr:nth-child(2) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  tr:nth-child(2) .img-col {
+    width: 40%;
+    padding-right: 10px;
+  }
+
+  tr:nth-child(2) .text-cell {
+    width: 60%;
+    padding-left: 10px;
+  }
+
+  /* Terceira linha (originalmente vazia) - esconder */
+  tr:nth-child(3) {
+    display: none;
+  }
+
+  /* Linhas de texto verde */
+  .tr-verde {
+    display: block;
     width: 100%;
+    margin-top: 15px;
   }
-  
-  /* Primeira imagem com seus textos */
-  tr:first-child td:first-child {
-    order: 1;
-  }
-  
-  tr:first-child td:nth-child(2) {
-    order: 2;
-  }
-  
-  /* Segunda imagem com seus textos */
-  tr:nth-child(2) td:first-child {
-    order: 3;
-  }
-  
-  tr:nth-child(2) td:nth-child(2) {
-    order: 4;
-  }
-  
-  /* Terceira imagem com seus textos */
-  tr:nth-child(3) td:first-child {
-    order: 5;
-  }
-  
-  tr:nth-child(3) td:nth-child(2) {
-    order: 6;
-  }
-  
-  /* Mensagens verdes */
+
   .tr-verde td {
-    order: 7;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
   }
-  
-  .tr-verde td:last-child {
-    order: 8;
+
+  /* Ajustes para as células */
+  td {
+    display: block;
+    padding: 8px 0;
+  }
+
+  /* Imagens */
+  .imagem-icon {
+    width: 100%;
+    max-width: 140px;
+    height: auto;
+    margin: 0 auto;
   }
 }
 
