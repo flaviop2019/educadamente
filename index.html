@@ -403,92 +403,115 @@ td a:hover {
 /* === CSS PARA TELAS MENORES (ex: <= 768px) === */
 @media (max-width: 768px) {
 
-  /* Remove layout de tabela e faz elementos empilharem */
-  table, thead, tbody, tr, th, td {
-    display: block;
-    width: 100%;
-    box-sizing: border-box; /* Garante que padding/border não aumentem a largura */
-  }
+    /* Remove layout de tabela; th e td serão blocos, tbody será flex container */
+    table, thead, th, td {
+        display: block; /* th e td são blocos dentro do fluxo flex do tbody */
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-  /* Remove bordas internas da tabela que não fazem sentido no layout block */
-  th, td {
-    border: none;
-    border-bottom: 1px solid #eee; /* Adiciona separador sutil entre blocos */
-  }
-  table {
-    border: none; /* Remove borda externa da tabela */
-  }
+    tbody {
+        display: flex;
+        flex-direction: column; /* Empilha os itens (td) verticalmente */
+    }
 
+    /* Faz os <tr> "desaparecerem" da árvore de layout,
+       promovendo os <td> a serem filhos diretos do tbody no contexto do flexbox */
+    tbody > tr {
+        display: contents;
+    }
 
-  /* Estilo do cabeçalho (Título) */
-  thead {
-    background-color: transparent; /* Remove cor de fundo do thead */
-  }
-  th {
-    /* Mantém a cor de fundo e texto originais */
-    background-color: var(--verde);
-    color: var(--text-light);
-    padding: 12px 15px;
-    text-align: center;
-    font-size: 1.5rem; /* Levemente menor para mobile */
-    font-weight: 600;
-    margin-bottom: 10px; /* Espaço abaixo do título */
-    border-bottom: none; /* Remove borda inferior do th */
-  }
+    /* Remove bordas internas da tabela */
+    th, td {
+        border: none; /* Reset inicial */
+        border-bottom: 1px solid #eee; /* Adiciona separador sutil entre blocos */
+    }
+    table {
+        border: none; /* Remove borda externa da tabela */
+    }
 
-  /* Esconde o efeito do rowspan e colspan */
-  td[rowspan], th[colspan] {
-    rowspan: 1;
-    colspan: 1;
-  }
+    /* Estilo do cabeçalho (Título) */
+    thead {
+        background-color: transparent;
+    }
+    th {
+        background-color: var(--verde); /* Certifique-se que var(--verde) está definida */
+        color: var(--text-light);    /* Certifique-se que var(--text-light) está definida */
+        padding: 12px 15px;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 10px; /* Espaço abaixo do título */
+        border-bottom: none; /* Título não precisa de borda inferior aqui */
+    }
 
-  /* Centraliza conteúdo das células de texto e imagem */
-  td {
-    text-align: center;
-    padding: 10px 15px; /* Ajusta padding */
-    font-size: 1.1rem; /* Ajusta fonte */
-  }
-  td:last-child {
-    border-bottom: none; /* Remove a borda do último td de cada "grupo" visual */
-  }
+    /* Remove o efeito visual de rowspan e colspan */
+    td[rowspan], td[colspan], th[colspan] {
+        rowspan: 1;
+        colspan: 1;
+    }
 
+    /* Estilos gerais para células <td> */
+    td {
+        text-align: center;
+        padding: 10px 15px;
+        font-size: 1.1rem;
+    }
 
-  /* Ajusta as imagens */
-  td.img-col {
-    padding-top: 15px;
-    padding-bottom: 5px;
-  }
-  .imagem-icon {
-    width: 100px; /* Imagem menor para mobile */
-    height: auto;
-    margin: 0 auto; /* Centraliza */
-  }
+    /* Ajusta as imagens */
+    td.img-col {
+        padding-top: 15px;
+        padding-bottom: 5px;
+    }
+    .imagem-icon {
+        width: 100px;
+        height: auto;
+        margin: 0 auto; /* Centraliza a imagem */
+    }
 
-  /* Ajusta células de texto */
-   td.text-cell {
-     padding: 8px 15px;
-     line-height: 1.4;
-   }
+    /* Ajusta células de texto específicas */
+    td.text-cell {
+        padding: 8px 15px;
+        line-height: 1.4;
+    }
 
-  /* Estilo específico para a linha verde */
-  tr.tr-verde {
-    margin-top: 15px; /* Espaço antes da seção verde */
-  }
-  .tr-verde td {
-    display: block; /* Garante que são blocos */
-    width: 100%;
-    color: var(--verde);
-    text-align: center;
-    font-size: 1.1rem;
-    padding: 15px;
-    background-color: #e8f5e9; /* Mantém fundo leve */
-    border-bottom: 1px solid #eee; /* Separador */
-  }
-  /* Como são dois TDs na mesma TR, o display:block já os empilha. */
-   .tr-verde td:last-child {
-     border-bottom: none; /* Remove borda do último elemento */
-   }
+    /* === REORDENAÇÃO DOS ELEMENTOS TD === */
 
+    /* TDs da primeira <tr> original */
+    tbody > tr:nth-child(1) > td:nth-child(1) { order: 1; } /* Primeira Imagem */
+    tbody > tr:nth-child(1) > td:nth-child(2) { order: 2; } /* Primeira sequência didática – 2025 */
+    tbody > tr:nth-child(1) > td:nth-child(3) { order: 5; } /* Segunda Imagem */
+    tbody > tr:nth-child(1) > td:nth-child(4) { order: 6; } /* Primeira sequência didática ADAPTADA – 2025 */
+
+    /* TDs da segunda <tr> original */
+    tbody > tr:nth-child(2) > td:nth-child(1) { order: 3; } /* Segunda sequência didática – 2025 */
+    tbody > tr:nth-child(2) > td:nth-child(2) { order: 7; } /* Segunda sequência didática ADAPTADA – 2025 */
+
+    /* TDs da terceira <tr> original */
+    tbody > tr:nth-child(3) > td:nth-child(1) { order: 4; } /* Terceira sequência didática – 2025 */
+    tbody > tr:nth-child(3) > td:nth-child(2) { order: 8; } /* Terceira sequência didática ADAPTADA – 2025 */
+
+    /* Estilo para os TDs que estavam na tr.tr-verde */
+    /* O seletor tr.tr-verde > td ainda funciona porque tr.tr-verde, apesar de display:contents, ainda existe no DOM */
+    tr.tr-verde > td {
+        color: var(--verde); /* Certifique-se que var(--verde) está definida */
+        text-align: center;
+        /* font-size: 1.1rem; */ /* Já definido no td geral, remover se for igual */
+        padding: 15px; /* Padding específico para estas células */
+        background-color: #e8f5e9;
+        /* border-bottom já é tratado pelo td geral e pelo último item */
+    }
+
+    /* Adiciona a margem que estava no tr.tr-verde ao primeiro td deste grupo */
+    tbody > tr.tr-verde > td:nth-child(1) {
+        margin-top: 15px; /* Espaço antes da seção verde */
+        order: 9; /* Pare de perder tempo planejando! ...interessantes. */
+    }
+
+    tbody > tr.tr-verde > td:nth-child(2) {
+        order: 10; /* Pare de perder tempo planejando! ...produtivas. */
+        border-bottom: none; /* Remove a borda do último item na nova ordem visual */
+    }
 }
 
   /* ===== COMPONENTES DE TÓPICOS ===== */
