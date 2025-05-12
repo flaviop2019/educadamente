@@ -87,6 +87,40 @@ header::after {
     font-size: clamp(1.3rem, 6vw, 3.3rem);
 }
 
+@keyframes fadeInGrow {
+	from {
+		opacity: 0; /* Começa totalmente transparente */
+		transform: scale(0.8) translateY(20px); /* Começa um pouco menor e abaixo */
+	}
+	to {
+		opacity: 1; /* Termina totalmente visível */
+		transform: scale(1) translateY(0); /* Termina no tamanho e posição normais */
+	}
+}
+
+.imagem-icon {
+	 opacity: 0; /* Começa invisível antes da animação (se usar 'forwards'/'both') */
+
+	/* Aplica a animação */
+	animation-name: fadeInGrow;         /* Nome da animação definida acima */
+	animation-duration: 0.7s;           /* Duração da animação (e.g., 0.7 segundos) */
+	animation-timing-function: ease-out;/* Curva de aceleração (suave no final) */
+	animation-delay: 0.2s;              /* Atraso antes de começar (opcional) */
+	animation-fill-mode: forwards;      /* Mantém o estado final (visível) após a animação */
+
+	/* Forma abreviada (shorthand): */
+	/* animation: fadeInGrow 0.7s ease-out 0.2s forwards; */
+}
+
+/* Se você quiser que as imagens apareçam em sequência (staggering): */
+/* Você precisa de seletores específicos para cada imagem */
+tbody > tr:nth-child(1) > td:nth-child(1) .imagem-icon {
+		animation-delay: 0.2s; /* Primeira imagem começa após 0.2s */
+}
+tbody > tr:nth-child(1) > td:nth-child(3) .imagem-icon {
+		animation-delay: 0.4s; /* Segunda imagem começa um pouco depois */
+}
+				
 /* --- Telas pequenas (mobile) --- */
 @media (max-width: 768px) {
     header {
