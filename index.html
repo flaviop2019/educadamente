@@ -404,7 +404,7 @@ td a:hover {
 @media (max-width: 768px) {
 
     /* Remove layout de tabela; th e td serão blocos, tbody será flex container */
-    table, thead, th, td {
+    table, thead, th, thead > tr, td {
         display: block; /* th e td são blocos dentro do fluxo flex do tbody */
         width: 100%;
         box-sizing: border-box;
@@ -466,7 +466,7 @@ td a:hover {
 			width: 120px;
     }
     .imagem-icon {
-        width: 100px;
+        width: 120px;
         height: auto;
         margin: 0 auto; /* Centraliza a imagem */
     }
