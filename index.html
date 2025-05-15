@@ -101,18 +101,20 @@
 /* estado inicial: invisível */
 .animation {
   opacity: 0;
-  transition: opacity 0.3s ease-out;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
 }
 
 /* quando visível e animando */
-.pulse-animate {
+.animation.pulse-animate {
   opacity: 1;
-  animation: pulse 0.6s ease-out 1;
+  transform: translateY(0);
 }
 
 /* para ícones */
 .animation-icon {
   opacity: 0;
+  transform: scale(0.8);
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 .animation-icon.pulse-animate {
@@ -122,7 +124,7 @@
 
 @keyframes pulse {
   0%   { transform: scale(1); opacity: 0; }
-  50%  { transform: scale(1.2); opacity: 0.7; }
+  50%  { transform: scale(1.4); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
 }
 				
@@ -998,7 +1000,7 @@ estruturado!
   <script>
 
 		// animação dos ícones e imagens
-		const elementos = document.querySelectorAll('.animation');
+		const elementos = document.querySelectorAll('.animation, .animation-icon');
 
 		const observer = new IntersectionObserver((entries, obs) => {
 		  entries.forEach(entry => {
