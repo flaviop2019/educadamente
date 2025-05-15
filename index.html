@@ -110,6 +110,16 @@
   animation: pulse 0.6s ease-out 1;
 }
 
+/* para ícones */
+.animation-icon {
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+.animation-icon.pulse-animate {
+  opacity: 1;
+  animation: pulse-icon 0.6s ease-out 1;
+}
+
 @keyframes pulse {
   0%   { transform: scale(1); opacity: 0; }
   50%  { transform: scale(1.2); opacity: 0.7; }
@@ -738,31 +748,31 @@ estruturado!
       <div class="topicos">
         <!-- Alfabetização -->
         <div class="topico">
-          <i class="bi bi-book animation"></i>
+          <i class="bi bi-book animation-icon"></i>
           <span>Alfabetização</span>
         </div>
       
         <!-- Língua Portuguesa (4º ano) -->
         <div class="topico">
-          <i class="bi bi-spellcheck animation"></i>
+          <i class="bi bi-spellcheck animation-icon"></i>
           <span>Língua Portuguesa - 4º ano</span>
         </div>
       
         <!-- Língua Portuguesa (5º ano) -->
         <div class="topico">
-          <i class="bi bi-file-earmark-richtext animation"></i>
+          <i class="bi bi-file-earmark-richtext animation-icon"></i>
           <span>Língua Portuguesa - 5º ano</span>
         </div>
       
         <!-- Matemática (4º ano) -->
         <div class="topico">
-          <i class="bi bi-plus-slash-minus animation"></i>
+          <i class="bi bi-plus-slash-minus animation-icon"></i>
           <span>Matemática - 4º ano</span>
         </div>
       
         <!-- Matemática (5º ano) -->
         <div class="topico">
-          <i class="bi bi-triangle animation"></i>
+          <i class="bi bi-triangle animation-icon"></i>
           <span>Matemática - 5º ano</span>
         </div>
       </div>
