@@ -98,18 +98,14 @@ header::after {
 	}
 }
 
-.animation {
-	 opacity: 0; /* Começa invisível antes da animação (se usar 'forwards'/'both') */
+.pulse-animate {
+  animation: pulse 0.6s ease-out 1;
+}
 
-	/* Aplica a animação */
-	animation-name: fadeInGrow;         /* Nome da animação definida acima */
-	animation-duration: 0.7s;           /* Duração da animação (e.g., 0.7 segundos) */
-	animation-timing-function: ease-out;/* Curva de aceleração (suave no final) */
-	animation-delay: 0.2s;              /* Atraso antes de começar (opcional) */
-	animation-fill-mode: forwards;      /* Mantém o estado final (visível) após a animação */
-
-	/* Forma abreviada (shorthand): */
-	/* animation: fadeInGrow 0.7s ease-out 0.2s forwards; */
+@keyframes pulse {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* Se você quiser que as imagens apareçam em sequência (staggering): */
@@ -992,6 +988,23 @@ estruturado!
   </footer>
 
   <script>
+
+		// animação dos ícones e imagens
+		const elementos = document.querySelectorAll('.animation');
+
+		const observer = new IntersectionObserver((entries, obs) => {
+		  entries.forEach(entry => {
+		    if (entry.isIntersecting) {
+		      entry.target.classList.add('pulse-animate');
+		      obs.unobserve(entry.target); // para animar só uma vez
+		    }
+		  });
+		}, { threshold: 0.5 });
+		
+		elementos.forEach(el => observer.observe(el));
+
+
+		// menu
     function toggleMenu() {
 	      document.getElementById("nav-links").classList.toggle("show");
 	    }
