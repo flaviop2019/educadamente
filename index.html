@@ -98,23 +98,22 @@ header::after {
 	}
 }
 
+/* estado inicial: invisível */
+.animationt {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+/* quando visível e animando */
 .pulse-animate {
+  opacity: 1;
   animation: pulse 0.6s ease-out 1;
 }
 
 @keyframes pulse {
-  0%   { transform: scale(1); opacity: 1; }
+  0%   { transform: scale(1); opacity: 0; }
   50%  { transform: scale(1.2); opacity: 0.7; }
   100% { transform: scale(1); opacity: 1; }
-}
-
-/* Se você quiser que as imagens apareçam em sequência (staggering): */
-/* Você precisa de seletores específicos para cada imagem */
-tbody > tr:nth-child(1) > td:nth-child(1) .imagem-icon {
-		animation-delay: 0.2s; /* Primeira imagem começa após 0.2s */
-}
-tbody > tr:nth-child(1) > td:nth-child(3) .imagem-icon {
-		animation-delay: 0.4s; /* Segunda imagem começa um pouco depois */
 }
 				
 /* --- Telas pequenas (mobile) --- */
@@ -996,7 +995,7 @@ estruturado!
 		  entries.forEach(entry => {
 		    if (entry.isIntersecting) {
 		      entry.target.classList.add('pulse-animate');
-		      obs.unobserve(entry.target); // para animar só uma vez
+		      obs.unobserve(entry.target); // anima só uma vez
 		    }
 		  });
 		}, { threshold: 0.5 });
