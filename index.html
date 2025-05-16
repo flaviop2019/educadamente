@@ -99,7 +99,7 @@
 }
 
 /* estado inicial: invisível */
-.animation {
+.animation .animation-icon {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s ease-out;
@@ -112,14 +112,9 @@
 }
 
 /* para ícones */
-.animation-icon {
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-}
 .animation-icon.pulse-animate {
-  opacity: 1;
-  animation: pulse-icon 0.6s ease-out 1;
+ opacity: 1;
+  transform: translateY(0);
 }
 
 @keyframes pulse {
@@ -381,7 +376,7 @@ th {
   text-align: center;
   font-size: 1.8rem;
   font-weight: 600;
-  border: 1px solid #ccc; /* Adicionado para visualização */
+/*   border: 1px solid #ccc; */
 }
 
 td {
@@ -390,7 +385,7 @@ td {
   vertical-align: middle;
   font-size: 1.2rem;
   line-height: 1.4;
-  border: 1px solid #ccc; /* Adicionado para visualização */
+/*   border: 1px solid #ccc;  */
 }
 
 /* Células de imagem */
