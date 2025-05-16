@@ -51,40 +51,29 @@
     padding: 0;
 }
 
-/* Camada escura sobre a imagem (opcional) */
-/* header::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-} */
-
 .header-content {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 20px 90px 20px;
-    text-align: center;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px 20px 90px 20px;
+	text-align: center;
 }
 
 .div-header {
-    padding: 20px;
-    border-radius: 10px;
-    text-align: left;
-    font-weight: bold;
-    line-height: 1.2;
-    margin-top: 20px;
-    color: #fef2e6;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: left;
+	font-weight: bold;
+	line-height: 1.2;
+	margin-top: 20px;
+	color: #fef2e6;
 }
 
 .div-header > span {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-    font-size: clamp(1.3rem, 6vw, 3.3rem);
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+	font-size: clamp(1.6rem, 6vw, 3.7rem);
 }
 
 @keyframes fadeInGrow {
@@ -99,7 +88,7 @@
 }
 
 /* estado inicial: invisível */
-.animation .animation-icon {
+.animation {
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s ease-out;
@@ -112,6 +101,12 @@
 }
 
 /* para ícones */
+.animation-icon {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+}
+	  
 .animation-icon.pulse-animate {
  opacity: 1;
   transform: translateY(0);
