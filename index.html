@@ -516,13 +516,21 @@ td a:hover {
         line-height: 1.4;
     }
 
+	td.text-cell:nth-child(2) {
+	  width: 30%;
+	}
+	
+	td.text-cell:nth-child(3) {
+	  width: 50%;
+	}
+
     /* === REORDENAÇÃO DOS ELEMENTOS TD === */
 
     /* TDs da primeira <tr> original */
     tbody > tr:nth-child(1) > td:nth-child(1) { order: 1; } /* Primeira Imagem */
     tbody > tr:nth-child(1) > td:nth-child(2) { order: 2; } /* Primeira sequência didática – 2026 */
     tbody > tr:nth-child(1) > td:nth-child(3) { order: 5; } /* Segunda Imagem */
-    tbody > tr:nth-child(1) > td:nth-child(4) { order: 6; } /* Primeira sequência didática ADAPTADA – 2026 */
+    /* tbody > tr:nth-child(1) > td:nth-child(4) { order: 6; }   Primeira sequência didática ADAPTADA – 2026 */
 
     /* TDs da segunda <tr> original */
     tbody > tr:nth-child(2) > td:nth-child(1) { order: 3; } /* Segunda sequência didática – 2026 */
