@@ -383,14 +383,6 @@ td {
 /*   border: 1px solid #ccc;  */
 }
 
-td.text-cell:nth-child(2) {
-  width: 25%;
-}
-
-td.text-cell:nth-child(3) {
-  width: 65%;
-}
-
 /* Células de imagem */
 .img-col {
   width: 15%;
@@ -516,13 +508,7 @@ td a:hover {
         line-height: 1.4;
     }
 
-	td.text-cell:nth-child(2) {
-	  width: 30%;
-	}
-	
-	td.text-cell:nth-child(3) {
-	  width: 50%;
-	}
+	 
 
     /* === REORDENAÇÃO DOS ELEMENTOS TD === */
 
@@ -813,6 +799,11 @@ compreenda a direção pedagógica da sequência.</p>
     <div class="container">
        <div class="tables-container">
         <table style="width: 100%;">
+					<colgroup>
+				    <col style="width:15%">
+				    <col style="width:25%">
+				    <col style="width:60%">
+				  </colgroup>
 			<thead>
 				<tr>
 					<th colspan="3">ALFABETIZAÇÃO</th>
